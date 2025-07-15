@@ -1,0 +1,619 @@
+.main-container {
+  padding-top: 40px;
+}
+
+.post-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+
+.post-summary{
+  margin: 30px 0 20px 0 !important;
+}
+
+
+@media (max-width: 767px) {
+  .post-card {
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #dbdbdb;
+  }
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.action-button.liked {
+  animation: likeAnimation 0.3s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.poster-image {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.post-caption {
+  font-size: 25px;
+  letter-spacing: 0.25px;
+  font-family: "roboto", sans-serif;
+  padding: 40px 0;
+}
+
+.profile-info .username {
+  font-weight: 400;
+  font-size: 25px;
+  margin-bottom: 2px;
+  font-family: "roboto", sans-serif;
+}
+
+.follow-button {
+  font-weight: 500;
+  font-size: 20px !important;
+  margin-bottom: 2px;
+  padding: 4px 25px !important;
+  font-family: "roboto", sans-serif;
+}
+
+.post-header .options-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.post-header .text_muted {
+  color: #1573fe;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "roboto", sans-serif;
+}
+
+.profile-image-container {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.name {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  rotate: 90deg;
+}
+
+.options-button:hover {
+  opacity: 0.7;
+}
+
+.categories-row {
+  display: flex;
+  gap: 10px;
+  padding: 6px 6px 6px 25px;
+  background-color: #d9d9d9;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  height: auto;
+  align-items: center;
+}
+
+.main-container .category-item-wrapper {
+  flex: 0 0 auto;
+}
+
+.main-container .category-item {
+  padding: 7px 12px;
+  border: 1px solid #fee9e7;
+  border-radius: 3px;
+  background-color: #e3e3e3;
+  color: #a00078;
+  font-weight: 500;
+}
+
+.main-container .category-item.active {
+  background-color: #e7fff2;
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.main-container .check-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* diwali sss start */
+
+.diwali-main-section {
+  padding-top: 180px;
+}
+
+.profile-arrow-parent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-tomain-text {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "roboto", sans-serif;
+}
+
+.back-link {
+  margin-top: 50px !important;
+}
+
+
+.main-container {
+  padding-top: 40px;
+}
+
+.post-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+
+@media (max-width: 767px) {
+  .post-card {
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #dbdbdb;
+  }
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.action-button.liked {
+  animation: likeAnimation 0.3s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.poster-image {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.post-caption {
+  font-size: 25px;
+  letter-spacing: 0.25px;
+  font-family: "roboto", sans-serif;
+  padding: 40px 0;
+}
+
+.profile-info .username {
+  font-weight: 400;
+  font-size: 25px;
+  margin-bottom: 2px;
+  font-family: "roboto", sans-serif;
+}
+
+.follow-button {
+  font-weight: 500;
+  font-size: 20px !important;
+  margin-bottom: 2px;
+  padding: 4px 25px !important;
+  font-family: "roboto", sans-serif;
+}
+
+.post-header .options-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.post-header .text_muted {
+  color: #1573fe;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "roboto", sans-serif;
+}
+
+.profile-image-container {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.name {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  rotate: 90deg;
+}
+
+.options-button:hover {
+  opacity: 0.7;
+}
+
+.categories-row {
+  display: flex;
+  gap: 10px;
+  padding: 6px 6px 6px 25px;
+  background-color: #d9d9d9;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  height: auto;
+  align-items: center;
+}
+
+.main-container .category-item-wrapper {
+  flex: 0 0 auto;
+}
+
+.main-container .category-item {
+  padding: 7px 12px;
+  border: 1px solid #fee9e7;
+  border-radius: 3px;
+  background-color: #e3e3e3;
+  color: #a00078;
+  font-weight: 500;
+}
+
+.main-container .category-item.active {
+  background-color: #e7fff2;
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.main-container .check-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* diwali sss start */
+
+.diwali-main-section {
+  padding-top: 180px;
+}
+
+.profile-arrow-parent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-tomain-text {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "roboto", sans-serif;
+}
+
+.back-link {
+  margin-top: 50px !important;
+}
+
+
+.main-container {
+  padding-top: 40px;
+}
+
+.post-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+
+@media (max-width: 767px) {
+  .post-card {
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #dbdbdb;
+  }
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.action-button.liked {
+  animation: likeAnimation 0.3s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.poster-image {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.post-caption {
+  font-size: 25px;
+  letter-spacing: 0.25px;
+  font-family: "roboto", sans-serif;
+  padding: 40px 0;
+}
+
+.profile-info .username {
+  font-weight: 400;
+  font-size: 25px;
+  margin-bottom: 2px;
+  font-family: "roboto", sans-serif;
+}
+
+.follow-button {
+  font-weight: 500;
+  font-size: 20px !important;
+  margin-bottom: 2px;
+  padding: 4px 25px !important;
+  font-family: "roboto", sans-serif;
+}
+
+.post-header .options-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.post-header .text_muted {
+  color: #1573fe;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "roboto", sans-serif;
+}
+
+.profile-image-container {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.name {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  padding: 5px;
+  color: #262626;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  rotate: 90deg;
+}
+
+.options-button:hover {
+  opacity: 0.7;
+}
+
+.categories-row {
+  display: flex;
+  gap: 10px;
+  padding: 6px 6px 6px 25px;
+  background-color: #d9d9d9;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  margin-bottom: 30px;
+  height: auto;
+  align-items: center;
+}
+
+.main-container .category-item-wrapper {
+  flex: 0 0 auto;
+}
+
+.main-container .category-item {
+  padding: 7px 12px;
+  border: 1px solid #fee9e7;
+  border-radius: 3px;
+  background-color: #e3e3e3;
+  color: #a00078;
+  font-weight: 500;
+}
+
+.main-container .category-item.active {
+  background-color: #e7fff2;
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.main-container .check-icon {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+/* diwali sss start */
+
+.diwali-main-section {
+  padding-top: 180px;
+}
+
+.profile-arrow-parent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-tomain-text {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "roboto", sans-serif;
+}
+
+.back-link {
+  margin-top: 50px !important;
+}
+
+@media (max-width: 576px) {
+  .post-caption {
+    font-size: 18px;
+  }
+
+  .profile-info .username {
+    font-size: 15px;
+  }
+
+  .post-header .text_muted {
+    font-size: 14px;
+  }
+
+  .profile-image-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .follow-button {
+    font-size: 14px !important;
+    padding: 4px 10px !important;
+    font-family: "roboto", sans-serif;
+  }
+}

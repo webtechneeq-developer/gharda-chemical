@@ -1,0 +1,712 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-yellow: #f5c362;
+  --color-green: #25d02c;
+  --color-blue: #0c9edd;
+  --color-red: #f56267;
+  --color-dark-blue: #07152f;
+  --color-light-blue: #c4c4c4;
+  --color-light-black-transparent: #00000014;
+  --color-light-gray-blue: #dce7f3;
+  --color-light-gray: #f5f5f5;
+  --color-pink-red-transparent: #f81539bf;
+  --color-bright-blue: #1573fe;
+  --color-dark-gray: #262626;
+  --color-medium-gray: #696868;
+  --color-black: #000000;
+  --color-darkBrownRed: #3e3232;
+  --color-skyBlue: #34d6ff;
+  --color-darkGray: #333333;
+}
+
+/* Inter */
+@font-face {
+  font-family: "ABeeZee-Regular";
+  src: url("/fonts/ABeeZee/ABeeZee-Regular.ttf");
+  font-weight: 400;
+}
+
+/* Inter */
+@font-face {
+  font-family: "inter";
+  src: url("/fonts/Inter/Inter-VariableFont_opsz\wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("/fonts/Roboto/Roboto-VariableFont_wdth\wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto_Slab";
+  src: url("/fonts/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ubuntu font start */
+@font-face {
+  font-family: "ubuntu-light";
+  src: url("/fonts/Ubuntu/Ubuntu-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "ubuntu-regular";
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url("/fonts/Ubuntu/Ubuntu-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.ttf");
+  font-weight: 700;
+}
+
+/* ubuntu font end */
+/* poppins font end */
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url(/fonts/Poppins/Poppins-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(/fonts/Poppins/Poppins-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url(/fonts/Poppins/Poppins-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url(/fonts/Poppins/Poppins-SemiBold.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url(/fonts/Poppins/Poppins-Bold.ttf);
+  font-weight: 700;
+}
+
+/* BakBak one */
+@font-face {
+  font-family: "BakbakOne-Regular";
+  src: url("/fonts/Bakbak One/BakbakOne-Regular.ttf");
+  font-weight: 400;
+}
+
+/* BakBak one end */
+
+/* Adamina */
+@font-face {
+  font-family: "Adamina";
+  src: url("/fonts/Adamina/Adamina-Regular.ttf");
+  font-weight: 400;
+}
+
+/* Exo */
+@font-face {
+  font-family: "Exo";
+  src: url(/fonts/Exo/Exo-VariableFont_wght.ttf);
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Exo */
+
+@font-face {
+  font-family: "Exo";
+  src: url(/fonts/Exo/Exo-VariableFont_wght.ttf);
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Exo */
+@font-face {
+  font-family: "Exo";
+  src: url(/fonts/Exo/Exo-VariableFont_wght.ttf);
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Exo */
+@font-face {
+  font-family: "Exo";
+  src: url(/fonts/Exo/Exo-VariableFont_wght.ttf);
+  font-weight: 100 900;
+  font-style: normal;
+}
+/* Adamina end */
+
+/* DM sans */
+@font-face {
+  font-family: "DM_Sans";
+  src: url("/fonts/DM_sans/DMSans-VariableFont_opsz\,wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* DM sans end */
+
+/* Alexandria */
+@font-face {
+  font-family: "Alexandria";
+  src: url("/fonts/Alexandria/Alexandria-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Alexandria end */
+
+/* Montserrat */
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* Montserrat end */
+
+/* Abril Fatface */
+@font-face {
+  font-family: "Abril_Fatface";
+  src: url("/fonts/Abril_Fatface/AbrilFatface-Regular.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ADLaM_Display";
+  src: url("/fonts/ADLaM_Display/ADLaMDisplay-Regular.ttf");
+  font-weight: 400;
+}
+
+/* Abril Fatface end */
+
+body {
+  font-family: "roboto", sans-serif;
+}
+
+.mt_20 {
+  margin-top: 20px;
+}
+.mb_100 {
+  margin-bottom: 100px;
+}
+.no-data-found {
+  display: flex;
+  justify-content: center;
+  padding: 150px;
+}
+
+/* BreadCumb */
+.custom-breadcrumb li {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  padding: 0 0 10px 10px;
+  color: var(--color-dark-blue);
+}
+
+.custom-breadcrumb .breadcrumb-item.active {
+  color: #07152f;
+}
+
+.custom-breadcrumb .breadcrumb-item .breadcrumb-icon {
+  color: #07152f;
+  width: 30px;
+  height: 30px;
+  font-family: "Roboto_Slab";
+}
+
+.custom-breadcrumb {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: none !important;
+  /* Removes default slash */
+}
+
+.no-underline {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0 !important;
+}
+
+.chemical-reaction-section {
+  padding-top: 180px;
+}
+
+.p-left {
+  padding-left: 70px !important;
+}
+
+/* 0000 */
+
+.wave-container {
+  position: relative;
+  width: 100%;
+  /* overflow: hidden; */
+  color: white;
+  font-family: sans-serif;
+}
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  background-color: #d9d9d9;
+  padding: 0 60px;
+}
+
+/* .custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  position: absolute;
+  width: 100%;
+  height: 95px;
+  top: 0;
+  z-index: 2;
+  background: transparent;
+} */
+
+/* .logo {
+  font-weight: bold;
+  font-size: 20px;
+} */
+.logo-box {
+  padding: 10px 5px;
+  /* background-color: white; */
+  text-align: center;
+  z-index: 4;
+  height: 100px;
+  width: 166px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-box img {
+  object-fit: contain;
+  width: 250px;
+  height: 150px;
+}
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-links li {
+  position: relative;
+  /* padding: 10px 20px; */
+  font-family: "inter ", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+/* .custom-navbar {
+  background: linear-gradient(101.84deg, #034ea2 2.78%, #034ea2 98.95%);
+} */
+
+.nav-links li.active::after {
+  background-color: #ced8e6;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user img {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-radius: 6px;
+}
+
+.user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.extra-square {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-icon {
+  width: 18px;
+  height: 18px;
+  color: rgb(85 153 247);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.user-dropdown li {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.user-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+.slogan-text {
+  font-size: 20px;
+  color: #00a0e3;
+  display: flex;
+  align-items: center;
+  /* white-space: nowrap; */
+  font-family: "inter ", sans-serif;
+}
+
+.slogan-text strong {
+  color: #0056a2; /* Darker blue or brand color */
+  margin-right: 4px;
+}
+
+.slogan-text .light-text {
+  color: #00a0e3;
+}
+
+/* Footer */
+.footer-bg-info {
+  background-color: #4cc9f0 !important;
+  padding: 13px;
+  margin-top: 7px;
+}
+
+/* end Footer */
+
+/* Responsive Styles */
+@media (max-width: 1300px) {
+  .nav-links {
+    gap: 25px;
+  }
+
+  .nav-links li {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    position: absolute;
+    /* top: 80px; */
+    top: 100px;
+    left: 0;
+    right: 0;
+    background-color: #004aad;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 20px 0;
+    z-index: 9;
+  }
+
+  .nav-links li {
+    text-align: left;
+    display: block;
+    max-width: 150px;
+    width: 100%;
+  }
+
+  .nav-links li::after {
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .nav-links li.active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .user {
+    display: none;
+  }
+
+  .custom-breadcrumb li {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .logo-box {
+    height: 85px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* .custom-navbar {
+    padding: 15px 40px;
+  } */
+  .slogan-text {
+    display: none;
+  }
+}
+
+@media (max-width: 468px) {
+  .logo-box {
+    height: 80px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 575px) {
+  .nav-links {
+    top: 90px;
+  }
+}
+
+@media (max-width: 447px) {
+  .custom-breadcrumb li {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 447px) {
+  .logo-box img {
+    object-fit: cover !important;
+  }
+}
+
+@media (max-width: 412px) {
+  .logo-box {
+    height: 66px;
+    width: 100px;
+  }
+}
+
+/* grid */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows: auto;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.grid-item {
+  border-radius: 16px;
+  padding: 20px;
+  color: #333;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.grid-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.desc {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.grid-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+  margin: auto 0;
+}
+
+.grid-btn {
+  margin-top: 20px;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.grid-btn:hover {
+  background: #444;
+}
+
+/* Optional: Custom heights/spans for variation */
+.item-1 {
+  grid-row: span 2;
+}
+.item-4,
+.item-5 {
+  grid-row: span 1;
+}

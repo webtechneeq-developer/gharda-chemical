@@ -1,0 +1,322 @@
+.comment-form-wrapper {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+
+
+    .form-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 30px !important;
+        color: var(--color-darkBrownRed);
+        display: flex;
+        align-items: center;
+    }
+
+    .red-line {
+        height: 10px;
+        width: 4px;
+        background-color: var(--color-pink-red-transparent);
+        border-radius: 12px;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+    .form-grid {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .form-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .name-control,
+    .website-control,
+    .email-control {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .form-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-grid label {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-darkBrownRed);
+    }
+
+    .form-footer label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-darkBrownRed);
+    }
+
+    input {
+        background-color: var(--color-light-gray);
+        border-radius: 12px;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        outline: none !important;
+        border: 1px solid var(--color-light-gray);
+    }
+
+    textarea {
+        background-color: var(--color-light-gray);
+        border-radius: 12px;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        resize: none !important;
+        border: 1px solid var(--color-light-gray);
+        outline: none !important;
+    }
+
+    input:focus,
+    textarea:focus {
+        box-shadow: 0px 0px 7px 0 var(--color-light-gray-blue);
+        border: 1px solid var(--color-light-gray-blue);
+    }
+
+    textarea::placeholder {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    /* CommentForm.css */
+    .error {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
+
+    .success-message {
+        color: green;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .form-footer {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .rating-label {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-darkBrownRed);
+    }
+
+    .rating-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 4px 4px 14px;
+        background-color: var(--color-light-gray);
+        border-radius: 12px;
+        flex-grow: 1;
+        gap: 10px;
+    }
+
+    .emoji-options {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .emoji-options img {
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .emoji-options img:hover {
+        transform: scale(1.2);
+    }
+
+    .btn-good {
+        padding: 14px 20px;
+        font-weight: 500;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        white-space: nowrap;
+        background-color: #26DE81;
+        color: var(--color-white);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-good:hover {
+        background-color: #27cb79;
+    }
+
+    .btn-send {
+        padding: 14px;
+        font-weight: 500;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        white-space: nowrap;
+        background-color: #F81539BF;
+        color: white;
+    }
+
+    .btn-send:hover {
+        background-color: #c7102fbf;
+    }
+
+    .btn-send .size {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+/* Responsive Adjustments */
+@media (min-width:990px) and (max-width: 1400px) {
+    .comment-form-wrapper {
+        .rating-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .emoji-options {
+            align-self: flex-end;
+        }
+
+        .form-footer label {
+            font-size: 16px;
+        }
+
+        .btn-send.display-none {
+            display: none !important;
+        }
+
+        .btn-send.display-block {
+            display: block !important;
+        }
+    }
+}
+
+@media (max-width: 990px) {
+    .comment-form-wrapper {
+        .form-footer {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .rating-row {
+            width: 100%;
+        }
+
+        .btn-send {
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .emoji-options {
+            gap: 10px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .comment-form-wrapper {
+        .form-grid {
+            flex-direction: column;
+        }
+
+        .rating-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .emoji-options {
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .btn-good {
+            width: fit-content;
+            padding: 10px 20px;
+        }
+
+        .btn-send {
+            padding: 10px 20px;
+            width: fit-content;
+        }
+    }
+}
+
+@media (max-width: 468px) {
+    .comment-form-wrapper {
+        .form-footer {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+        }
+
+        .rating-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .emoji-options {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .emoji-options img {
+            height: 22px;
+            width: 22px;
+        }
+
+
+        .btn-send {
+            width: 100%;
+            justify-content: center;
+        }
+
+
+        .btn-good {
+            padding: 8px 16px;
+        }
+
+        .btn-good span,
+        .btn-send span {
+            font-size: 14px;
+        }
+
+        .btn-send .size {
+            width: 18px;
+            height: 18px;
+        }
+
+        .rating-label {
+            font-size: 14px;
+        }
+    }
+}

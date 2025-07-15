@@ -1,0 +1,123 @@
+.category-swiper-container {
+    width: 100%;
+    position: relative;
+    margin: 60px 0;
+    padding: 10px;
+    background-color: var(--color-light-gray);
+    border-radius: 12px;
+    overflow-x: hidden;
+}
+
+.category-swiper-container .category-slide {
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.category-card {
+    width: 100%;
+    height: 48px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: inherit;
+    filter: blur(4px);
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Make the active card's background sharp */
+.category-card::before {
+    background-image: var(--bg-image);
+}
+
+
+.category-swiper-container .overlay{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Roboto",sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+}
+
+.category-swiper-container .swiper-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    opacity: 1;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.category-swiper-container .shadow-right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 126px;
+    height: 100%;
+    z-index: 8;
+    background: linear-gradient(to left, #f5f5f5 40%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.category-swiper-container .custom-next {
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1162px) {
+    .category-swiper-container .category-card {
+        height: 60px;
+    }
+
+    .category-swiper-container .custom-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-swiper-container .category-card {
+        height: 64px;
+    }
+
+    .category-swiper-container .swiper-button {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-swiper-container .category-card {
+        height: 80px;
+    }
+
+    .category-swiper-container .custom-next {
+        right: 5px;
+    }
+}

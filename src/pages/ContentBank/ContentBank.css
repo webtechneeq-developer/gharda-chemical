@@ -1,0 +1,50 @@
+.content-bank-container {
+  padding-top: 180px;
+}
+
+.content-bank-container .title {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  font-family: "Roboto_Slab";
+}
+
+.content-bank-container .section {
+  margin-top: 70px;
+}
+
+.content-bank-container .section h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-black);
+  font-family: "Roboto_Slab";
+}
+
+.content-bank-container .section ul {
+  list-style: disc !important;
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--color-black);
+  font-family: "Roboto_Slab";
+}
+
+.content-bank-container .section li {
+  list-style: disc !important;
+}
+
+@media (max-width: 768px) {
+  .content-bank-container .title {
+    font-size: 22px;
+  }
+
+  .content-bank-container .section h4 {
+    font-size: 18px;
+  }
+
+  .content-bank-container .section li {
+    font-size: 15px;
+  }
+  .content-bank-container .section {
+    margin-top: 35px;
+  }
+}

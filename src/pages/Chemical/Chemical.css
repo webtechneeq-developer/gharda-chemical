@@ -1,0 +1,99 @@
+.chemical-article-section {
+  .chemical-right-section {
+    background: #f5f5f5;
+    padding: 31px 31px 50px 31px;
+    border-radius: 12px;
+  }
+
+  .chemical-title {
+    margin-bottom: 31px !important;
+    font-family: "roboto", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: #000000;
+  }
+
+  .article-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: -100px;
+    position: relative;
+    border-radius: 12px;
+  }
+
+  .meta-icon {
+    width: 16px;
+    height: 16px;
+    color: #888;
+  }
+
+  .meta-info {
+    margin-top: 60px;
+  }
+
+  .meta-info small {
+    font-size: 0.85rem;
+  }
+}
+
+/* Gallery section */
+.custom-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.gallary-title {
+  margin-bottom: 30px !important;
+  font-size: 20px;
+  color: #3e3232;
+  font-family: "roboto", sans-serif;
+  font-weight: 700;
+}
+
+/* commentsection start */
+.downloads-wrapper {
+  background: #fff;
+  margin: 100px 0;
+}
+
+.download-title .title {
+  font-size: 20px;
+  color: #3e3232;
+  font-family: "roboto", sans-serif;
+  font-weight: 700;
+}
+
+.doc-text {
+  color: #143886;
+  text-decoration: underline;
+  font-weight: 600;
+  font-family: "roboto", sans-serif;
+  font-size: 16px;
+}
+
+.doc-icon {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+@media (max-width: 992px) {
+
+  /* commentsection start */
+  .downloads-wrapper {
+    margin: 60px 0 !important;
+  }
+
+  /*end  commentsection start */
+
+  .chemical-reaction-section {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chemical-reaction-section {
+    padding-top: 140px;
+  }
+}

@@ -1,0 +1,113 @@
+.pdf-container {
+    margin: 0 auto 40px auto;
+    padding: 55px 15px;
+    background-color: var(--color-light-gray-blue);
+}
+
+.pdf-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-dark-blue);
+    font-family: "Roboto_Slab";
+}
+
+.pdf-list {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pdf-card {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.pdf-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px 0 10px 0px;
+    color: var(--color-black);
+}
+
+
+.pdf-header .arrow svg {
+    height: 16px;
+    width: 16px;
+}
+
+.pdf-footer {
+    display: flex;
+    align-items: center;
+    gap: 20PX;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #555555;
+    margin-left: 26px;
+}
+
+.download-link {
+    text-decoration: none;
+    color: #555555;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.author-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+}
+
+.author-wrapper .dot {
+    font-size: 12px;
+}
+
+@media (max-width: 990px) {
+    .pdf-container {
+        padding: 30px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pdf-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 468px) {
+    .pdf-title {
+        font-size: 22px;
+    }
+
+    .pdf-card {
+        padding: 12px;
+    }
+
+    .pdf-header {
+        font-size: 12px;
+        margin: 0 0 10px 0px;
+    }
+
+    .pdf-footer {
+        font-size: 11px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .dot {
+        display: none;
+    }
+
+
+}

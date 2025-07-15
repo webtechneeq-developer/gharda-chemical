@@ -1,0 +1,115 @@
+.pdf-custom-padding-section {
+  /* padding: 40px 20px; */
+  padding-top: 200px;
+}
+
+.pdf-custom-padding-section .main-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  font-family: "Roboto_Slab";
+  margin-bottom: 14px !important;
+}
+
+.pdf-articles-section .section {
+  background-color: var(--color-light-gray-blue);
+  padding: 35px;
+  margin-bottom: 30px;
+}
+
+.pdf-articles-section .section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  font-family: "Roboto_Slab";
+  margin-bottom: 15px !important;
+}
+
+.pdf-articles-section .articles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.pdf-articles-section .article-card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 40px 20px;
+}
+
+.pdf-articles-section .article-title {
+  font-size: 14px;
+  font-family: "Exo";
+  font-weight: 600;
+}
+
+.pdf-articles-section .article-footer {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #555555;
+  margin-left: 26px;
+  margin-top: 15px !important;
+}
+
+.pdf-articles-section .author-name {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+
+.pdf-articles-section .author-name::before {
+  content: "•";
+  margin-right: 6px;
+  color: #555555;
+}
+
+.pdf-articles-section .view-more-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.pdf-articles-section .view-more-btn {
+  background-color: #25d02c;
+  color: #000000;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-size: 14px;
+  font-family: "Exo";
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pdf-articles-section .view-more-btn:hover {
+  background-color: #009933;
+}
+
+.pdf-articles-section .article-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-articles-section .article-icon {
+  width: 20px;
+  height: 20px;
+  color: #555555;
+}
+
+@media (max-width: 576px) {
+  .pdf-articles-section .view-more-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .pdf-articles-section .article-footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

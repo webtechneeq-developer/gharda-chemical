@@ -1,0 +1,102 @@
+/* comment start */
+.comment-section {
+  .comment-header .red-dot {
+    width: 4px;
+    height: 10px;
+    background-color: red;
+    border-radius: 12px;
+  }
+
+  .text-comment {
+    font-size: 20px;
+    color: #3e3232;
+    font-family: "roboto", sans-serif;
+    font-weight: 700;
+  }
+
+  .user-name {
+    font-size: 16px;
+    color: #3e3232;
+    font-family: "roboto", sans-serif;
+    font-weight: 700;
+  }
+
+  .comment-text {
+    font-size: 14px;
+    color: #000000BF;
+    font-family: "roboto", sans-serif;
+    font-weight: 400;
+  }
+
+  .comment-date {
+    font-size: 14px;
+    color: #3E3232BF;
+    font-family: "roboto", sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+
+  .comment-date .calender {
+    height: 16px;
+    width: 16px;
+  }
+
+.comment-box {
+    background-color: #F5F5F5;
+    position: relative;
+    /* z-index: -1 !important; */
+    /* padding: 15px 20px 140px !important; */
+    padding: 15px 20px  140px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+
+  .parent {
+    display: flex;
+    justify-content: center;
+  }
+
+  .replies-box {
+    background: #ffffff;
+    box-shadow: 0px 0px 32px 0px #00000012;
+    border-radius: 12px;
+    width: 80%;
+    margin-top: -100px;
+    margin-bottom: 40px;
+    padding: 15px 30px 20px 15px;
+    position: relative;
+    z-index: 10;
+    /* ✅ Add this */
+  }
+
+  .user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+}
+
+.reply-btn {
+  background: #3e32320d !important;
+  border: none !important;
+  padding: 8px 17px !important;
+  font-size: 14px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  display: flex;
+  /* Ensure flex layout */
+  align-items: center;
+  /* Vertically center the icon and text */
+  gap: 8px;
+  /* Optional: Space between icon and text */
+}
+
+@media (max-width: 576px) {
+  .users-text {
+    flex-direction: column;
+  }
+}

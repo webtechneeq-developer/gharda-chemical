@@ -1,0 +1,156 @@
+.post-blog-section {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.post-blog-section .section-title {
+  font-weight: 400;
+  font-size: 25px;
+  z-index: 2;
+  color: #262626;
+  font-family: "Abril_Fatface";
+  margin-bottom: 15px !important;
+}
+
+.post-blog-section .bg-left {
+  background: #ebeef3;
+  position: relative;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.post-blog-section .section-subtitle {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.post-blog-section .post-item {
+  gap: 24px;
+  align-items: center;
+}
+
+.post-blog-section .post-meta {
+  font-size: 14px;
+  color: #26262699;
+  font-weight: 500;
+  font-family: "DM_Sans";
+  margin-bottom: 6px !important;
+}
+
+.post-blog-section .post-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #262626;
+  margin-bottom: 13px !important;
+  font-family: "inter ", sans-serif;
+}
+
+.post-blog-section .post-summary {
+  font-size: 14px;
+  color: #696868;
+  font-family: "DM_Sans";
+  font-weight: 400;
+}
+
+/*  */
+.post-blog-section .bg_danger {
+  top: 30px;
+  left: 30px;
+  border: 1px solid white;
+  color: #ebeef3;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.post-blog-section .teaser-card {
+  height: 100%;
+  background-image: url("/images/brain-teaser.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 350px;
+}
+
+.post-blog-section .teaser-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black with 60% opacity */
+  z-index: 0;
+  border-radius: 8px;
+}
+
+.post-blog-section .teaser-card>* {
+  position: relative;
+  z-index: 1;
+}
+
+.post-blog-section .teaser-date {
+  font-size: 18px;
+  margin-bottom: 10px !important;
+  font-weight: 400;
+  font-family: "DM_Sans";
+  color: var(--color-white);
+}
+
+.post-blog-section .teaser-title {
+  font-size: 30px;
+  font-weight: 400;
+  font-family: "ADLaM_Display";
+  color: var(--color-white);
+}
+
+.post-blog-section .general-achievement {
+  position: absolute;
+  bottom: -8px;
+  left: 11px;
+  font-weight: 400;
+  font-size: 25px;
+  z-index: 2;
+  color: #262626;
+  font-family: "Abril_Fatface";
+}
+
+.post-blog-section .content-wrapper {
+  padding: 25px;
+}
+
+@media (max-width: 1200px) {
+  .post-blog-section .post-item {
+    flex-direction: column;
+    align-items: normal;
+  }
+}
+
+@media (max-width: 992px) {
+  .post-blog-section .content-wrapper {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-blog-section .content-wrapper {
+    padding: 10px;
+  }
+
+  .post-blog-section .teaser-title {
+    font-size: 16px;
+  }
+
+  .post-blog-section .general-achievement {
+    font-size: 20px;
+  }
+
+  .post-blog-section .section-title {
+    font-size: 20px;
+  }
+
+  .post-blog-section {
+    margin-top: 0;
+  }
+}

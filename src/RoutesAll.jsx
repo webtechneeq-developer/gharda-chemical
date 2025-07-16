@@ -1,4 +1,3 @@
-
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
@@ -17,6 +16,7 @@ import AdminPostDetails from "./pages/Categories/AdminPostDetails";
 import GlobalLoader from "./components/Loader/GlobalLoader";
 import FilteredPdfArticles from "./pages/DownloadPdfArticles/commonDownloadPdfArticles/FilteredArticles";
 import ContentBank from "./pages/ContentBank/ContentBank";
+import KnowledgeCenter from "./pages/knowledgeCenter/knowledgeCenter";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -71,9 +71,13 @@ const RoutesAll = () => {
           path: "*",
           element: <NotFound />,
         },
-         {
+        {
           path: "content-bank",
-          element: <ContentBank/>,
+          element: <ContentBank />,
+        },
+        {
+          path: "knowledge-center",
+          element: <KnowledgeCenter />,
         },
       ],
     },

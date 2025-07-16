@@ -44,7 +44,7 @@ const items = [
     title: "Knowledge Centre",
     icon: "/images/Knowledge-centre.png",
     bgColor: "#fff3c4",
-    link: "#",
+    link: "/knowledge-center",
   },
 ];
 

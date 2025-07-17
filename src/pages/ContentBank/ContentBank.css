@@ -2,6 +2,11 @@
   padding-top: 180px;
 }
 
+.container-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .content-bank-container .title {
   font-size: 27px;
   font-weight: 700;
@@ -47,4 +52,7 @@
   .content-bank-container .section {
     margin-top: 35px;
   }
+}
+.all-box {
+    display: ruby;
 }

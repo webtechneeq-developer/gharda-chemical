@@ -30,7 +30,7 @@ const items = [
     title: "Content Bank",
     icon: "/images/content-bank.png",
     bgColor: "#e5f0ff",
-    link: "https://animetrixlabs.com/knowledgecentre/content-bank-download/",
+    link: "/content-bank",
   },
 
   // 000

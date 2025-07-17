@@ -7,7 +7,7 @@ import WaveNavbar from "./components/navbar/WaveNavbar";
 const Layout = () => {
   return (
     <>
-      <WaveNavbar />
+      <WaveBackground />
       <Outlet />
       <Footer />
     </>

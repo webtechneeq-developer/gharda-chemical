@@ -17,6 +17,7 @@ import GlobalLoader from "./components/Loader/GlobalLoader";
 import FilteredPdfArticles from "./pages/DownloadPdfArticles/commonDownloadPdfArticles/FilteredArticles";
 import ContentBank from "./pages/ContentBank/ContentBank";
 import KnowledgeCenter from "./pages/knowledgeCenter/knowledgeCenter";
+import BlogContainer from "./pages/knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -26,6 +27,10 @@ const RoutesAll = () => {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/singlePost/:id",
+          element: <BlogContainer />,
         },
         {
           path: "/posts/:id",

@@ -6,6 +6,7 @@ import PostContent from "./PostContentProps";
 import { ArrowLeftIcon } from "@heroicons/react/16/solid";
 import { useApi } from "../../hooks/useApi";
 import { useNavigate, useParams } from "react-router-dom";
+import BlogContainer from "../knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 
 const AdminPostDetails = () => {
   const { id } = useParams();
@@ -37,32 +38,27 @@ const AdminPostDetails = () => {
   };
 
   const handleGoBack = () => {
-  if (window.history.length > 1) {
-    navigate(-1);
-    console.log(windows.history.length)
-  } 
-
-
-};
+    if (window.history.length > 1) {
+      navigate(-1);
+      console.log(windows.history.length);
+    }
+  };
 
   return (
     <div className="container">
       <div className="diwali-main-section">
         <div className="post-wrapper">
           <Card className="post-card mb-3 border-0">
-            <PostHeader
+            {/* <PostHeader
               username={post?.username}
-              profileImage={post?.user_image_full_url}
+              profileImage={post?.image}
               selectedCategory={post?.category_name}
               // name={post?.name}
               showFollowButton={false}
               showLeftArrow={true}
-            />
+            /> */}
 
-            <div
-              dangerouslySetInnerHTML={{ __html: post?.description }}
-              style={{ marginTop: "50px" }}
-            ></div>
+            <BlogContainer />
             {/* <PostContent image={post?.cover_image_full_url} caption={post?.caption} />
                   <div className="extra-description mt-3">
                     <p className="post-caption">

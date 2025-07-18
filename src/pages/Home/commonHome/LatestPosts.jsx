@@ -116,9 +116,12 @@ const LatestPosts = () => {
 
       <div className="row">
         {posts?.map((post) => (
-          <div className="col-lg-6 d-flex flex-column gap-4" key={post.id} style={{ marginBottom: "16px" }}>
+          <div
+            className="col-lg-6 d-flex flex-column gap-4"
+            key={post.id}
+            style={{ marginBottom: "16px" }}
+          >
             <PostCard {...post} />
-
           </div>
         ))}
       </div>

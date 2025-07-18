@@ -4,14 +4,14 @@ import { BookmarkIcon } from "@heroicons/react/24/outline";
 import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
 
-const PostCard = ({
+const BlogPostCard = ({
   id,
   title,
   username,
   short_description,
   created_at,
-  user_image_full_url,
-  cover_image_full_url,
+  image,
+  avatar,
 }) => {
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const PostCard = ({
     <div className="post-card-main">
       <div className="card  flex-row post-card h-100">
         <img
-          src={cover_image_full_url}
+          src={image}
           alt={title}
           className="img-fluid card-image"
           style={{ cursor: "pointer" }}
@@ -81,7 +81,7 @@ const PostCard = ({
           <div className="d-flex justify-content-between align-items-center author-box">
             <div className="d-flex align-items-center">
               <img
-                src={user_image_full_url}
+                src={avatar}
                 alt={username}
                 className="rounded-avtar-image "
                 width="44"
@@ -99,4 +99,4 @@ const PostCard = ({
     </div>
   );
 };
-export default PostCard;
+export default BlogPostCard;

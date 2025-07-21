@@ -70,7 +70,7 @@ const PoliciesandGuidelines = {
   ],
 };
 const StandardOperatingProcedures = {
-  title: "Standard Operating Procedures (SOPs)",
+  title: "Procurement - Standard Operating Procedures (SOPs)",
   listItems: [
     "Purchase Requisition (PR) Process SOP",
     "Purchase Order (PO) Generation SOP",

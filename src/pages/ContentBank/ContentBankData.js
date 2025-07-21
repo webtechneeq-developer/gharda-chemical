@@ -181,7 +181,7 @@ const ContentBankDataNew = [
     ],
   },
   {
-    title: "Procurement - Forms & Templates",
+    title: " Forms & Templates",
     listItems: [
       "Purchase Requisition Form",
       "Vendor Registration Form",

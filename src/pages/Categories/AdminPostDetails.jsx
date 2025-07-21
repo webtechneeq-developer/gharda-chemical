@@ -7,6 +7,7 @@ import { ArrowLeftIcon } from "@heroicons/react/16/solid";
 import { useApi } from "../../hooks/useApi";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogContainer from "../knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
+import BlogList from "../BlogEditor/components/BlogList";
 
 const AdminPostDetails = () => {
   const { id } = useParams();
@@ -58,7 +59,47 @@ const AdminPostDetails = () => {
               showLeftArrow={true}
             /> */}
 
-            <BlogContainer />
+            {/* <BlogContainer /> */}
+
+            <div className="blog-entry-header">
+              <div className="row align-items-center">
+                <div className="col-lg-12">
+                  <ul className="entry-meta">
+                    <li>
+                      <img
+                        loading="lazy"
+                        src="https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg"
+                        className="avatar user-1-avatar avatar-150 photo"
+                        width="150"
+                        height="150"
+                        alt="Profile Photo"
+                      />
+                      By{" "}
+                      <a href="https://animetrixlabs.com/knowledgecentre/author/wt-gharda/">
+                        wt-gharda
+                      </a>
+                    </li>
+                    <li>
+                      <i className="icofont-calendar"></i> July 15, 2025{" "}
+                    </li>
+                    <li>
+                      <i className="icofont-comment"></i> 0 Comments{" "}
+                    </li>
+                    <li>
+                      <i className="icofont-tag"></i>{" "}
+                      <a
+                        href="https://animetrixlabs.com/knowledgecentre/category/new-post/"
+                        rel="category tag"
+                      >
+                        new post
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <BlogList />
             {/* <PostContent image={post?.cover_image_full_url} caption={post?.caption} />
                   <div className="extra-description mt-3">
                     <p className="post-caption">

@@ -1,5 +1,5 @@
 .content-bank-container {
-  padding-top: 180px;
+  padding-top: 60px;
 }
 
 .container-content {
@@ -10,6 +10,7 @@
 .content-bank-container .title {
   font-size: 27px;
   font-weight: 700;
+  padding-bottom: 14px;
   color: var(--color-dark-blue);
   font-family: "Roboto_Slab";
 }

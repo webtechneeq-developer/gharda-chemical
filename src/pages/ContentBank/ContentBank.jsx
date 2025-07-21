@@ -61,7 +61,7 @@ const HOITPolicy = {
 };
 
 const PoliciesandGuidelines = {
-  title: "Procurement - Policies and Guidelines",
+  title: "Policies and Guidelines",
   listItems: [
     "Procurement Policy Manual",
     "Vendor Selection Guidelines",
@@ -70,7 +70,7 @@ const PoliciesandGuidelines = {
   ],
 };
 const StandardOperatingProcedures = {
-  title: "Procurement - Standard Operating Procedures (SOPs)",
+  title: "Standard Operating Procedures (SOPs)",
   listItems: [
     "Purchase Requisition (PR) Process SOP",
     "Purchase Order (PO) Generation SOP",
@@ -82,7 +82,7 @@ const StandardOperatingProcedures = {
   ],
 };
 const FormsTemplates = {
-  title: "Procurement - Forms & Templates",
+  title: "Forms & Templates",
   listItems: [
     "Purchase Requisition Form",
     "Vendor Registration Form",
@@ -96,7 +96,7 @@ const FormsTemplates = {
   ],
 };
 const ChecklistsReferenceDocuments = {
-  title: "Procurement - Checklists & Reference Documents",
+  title: "Checklists & Reference Documents",
   listItems: [
     "Procurement Process Checklist",
     "Vendor Document Submission Checklist",

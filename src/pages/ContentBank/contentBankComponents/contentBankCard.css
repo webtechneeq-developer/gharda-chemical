@@ -35,7 +35,7 @@
 .card-header {
   padding: 1rem;
   cursor: pointer;
-      width: 315px;
+  width: 330px;
   border-bottom: 1px solid #e5e7eb;
   background: linear-gradient(to right, #2b6cb0, #2c5282);
 }

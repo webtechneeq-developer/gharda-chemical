@@ -21,7 +21,7 @@ export function ContentBankCard({ title, listItems, isOpen, onToggle }) {
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"
-            className={`arrow-icon ${isOpen ? "rotate" : ""}`}
+            className={`arrow-icon ${isOpen === true ? "rotate" : ""}`}
           >
             <path
               clipRule="evenodd"

@@ -14,7 +14,7 @@ import ArticleList from "../../components/article-List/ArticleList";
 const Home = () => {
   return (
     <>
-    {/* IconSection start */}
+      {/* IconSection start */}
       <IconSection />
       {/* NewsSection  start */}
       <NewsSection />

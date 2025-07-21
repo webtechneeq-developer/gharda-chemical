@@ -8,7 +8,6 @@ import { useApi } from "../../hooks/useApi";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogContainer from "../knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 import BlogList from "../BlogEditor/components/BlogList";
-import sanitizeHtml from "sanitize-html";
 
 const AdminPostDetails = () => {
   const { id } = useParams();

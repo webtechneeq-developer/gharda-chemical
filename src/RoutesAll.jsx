@@ -18,6 +18,8 @@ import FilteredPdfArticles from "./pages/DownloadPdfArticles/commonDownloadPdfAr
 import ContentBank from "./pages/ContentBank/ContentBank";
 import KnowledgeCenter from "./pages/knowledgeCenter/knowledgeCenter";
 import BlogContainer from "./pages/knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
+import BlogEditor from "./pages/BlogEditor/components/BlogEditor";
+import Blog from "./pages/BlogEditor/Blog";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -83,6 +85,10 @@ const RoutesAll = () => {
         {
           path: "knowledge-center",
           element: <KnowledgeCenter />,
+        },
+        {
+          path: "edit-blog",
+          element: <Blog />,
         },
       ],
     },

@@ -8,12 +8,27 @@ import { useApi } from "../../hooks/useApi";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogContainer from "../knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 import BlogList from "../BlogEditor/components/BlogList";
+import sanitizeHtml from "sanitize-html";
 
 const AdminPostDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const { postData } = useApi();
   const navigate = useNavigate();
+
+  const cleanHTML = sanitizeHtml(dirtyHTML, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+      "img",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "span",
+    ]),
+    allowedAttributes: {
+      "*": ["href", "src", "alt"],
+    },
+  });
 
   useEffect(() => {
     handleSubmit();

@@ -1,0 +1,21 @@
+ul {
+    list-style: circle;
+    padding-left: 3rem;
+}
+
+.blog-btn {
+margin-top: 10px;
+background-color: #007bff;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 10px;
+}
+
+.blog-title {
+border-radius: 10px;
+}
+
+.blog-btn:hover {
+background-color: #20538a;
+}

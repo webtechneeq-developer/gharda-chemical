@@ -1,12 +1,13 @@
 // src/components/BlogEditor.js
 import React, { useState } from "react";
-import ReactQuill from "react-quill";
-import axios from "axios";
-import "react-quill/dist/quill.snow.css";
 
-export default function BlogEditor({ onBlogSaved }) {
+import axios from "axios";
+import { Editor } from "primereact/editor";
+
+export default function BlogEditor() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [text, setText] = useState("");
 
   // const handleSave = async () => {
   //   if (!title || !content) return alert("Please fill all fields");
@@ -21,18 +22,27 @@ export default function BlogEditor({ onBlogSaved }) {
   //   setContent("");
   // };
 
+  console.log("BlogEditor rendered", content);
+
   return (
     <div className="p-4">
       <input
-        className="border p-2 w-full mb-4"
+        className="border p-2 w-full mb-4 blog-title"
         placeholder="Blog Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <ReactQuill value={content} onChange={setContent} />
-      <button className="mt-4 bg-blue-600 text-white px-4 py-2">
-        Publish Blog
-      </button>
+
+      <div className="card">
+        <Editor
+          value={content}
+          onTextChange={(e) => setContent(e.htmlValue)}
+          style={{ height: "320px" }}
+          placeholder="Write your blog content here..."
+        />
+      </div>
+
+      <button className="blog-btn">Publish Blog</button>
     </div>
   );
 }

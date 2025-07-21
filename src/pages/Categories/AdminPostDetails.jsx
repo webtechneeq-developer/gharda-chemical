@@ -16,20 +16,6 @@ const AdminPostDetails = () => {
   const { postData } = useApi();
   const navigate = useNavigate();
 
-  const cleanHTML = sanitizeHtml(dirtyHTML, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-      "img",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "span",
-    ]),
-    allowedAttributes: {
-      "*": ["href", "src", "alt"],
-    },
-  });
-
   useEffect(() => {
     handleSubmit();
   }, []);

@@ -13,6 +13,12 @@
     align-items: center;
 }
 
+.read-more {
+    font-weight: 600;
+    color: #2d5be3;
+
+}
+
 .media {
     display: -ms-flexbox;
     display: flex;
@@ -81,6 +87,11 @@ p {
     top: 46%;
     right: -35px;
     transform: translateY(-50%);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
 .block-box {

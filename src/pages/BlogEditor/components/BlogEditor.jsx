@@ -1,48 +1,63 @@
-// src/components/BlogEditor.js
 import React, { useState } from "react";
-
 import axios from "axios";
 import { Editor } from "primereact/editor";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import "./BlogEditor.css"; // ← Import the CSS
+import { FaPaperclip } from "react-icons/fa"; // You can use any icon
 
 export default function BlogEditor() {
-  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [text, setText] = useState("");
+  const [file, setFile] = useState(null);
 
-  // const handleSave = async () => {
-  //   if (!title || !content) return alert("Please fill all fields");
+  const handleFileChange = (e) => {
+    const uploadedFile = e.target.files[0];
+    setFile(uploadedFile);
+  };
 
-  //   const res = await axios.post("http://localhost:4000/api/blog", {
-  //     title,
-  //     content,
-  //   });
+  const handleIconClick = () => {
+    fileInputRef.current.click();
+  };
 
-  //   onBlogSaved(res.data);
-  //   setTitle("");
-  //   setContent("");
-  // };
+  const handleSave = async () => {
+    if (!content) return alert("Please fill all fields");
 
-  console.log("BlogEditor rendered", content);
+    const formData = new FormData();
+    formData.append("content", content);
+    if (file) formData.append("attachment", file);
+
+    try {
+      const res = await axios.post("http://localhost:4000/api/blog", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log("Blog saved:", res.data);
+      alert("Blog published!");
+      setContent("");
+      setFile(null);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to publish blog");
+    }
+  };
 
   return (
-    <div className="p-4">
-      <input
-        className="border p-2 w-full mb-4 blog-title"
-        placeholder="Blog Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+    <div>
+      <div className="p-6 max-w-4xl mx-auto space-y-6 bg-white rounded-xl">
+        {/* Title input */}
 
-      <div className="card">
+        {/* Rich text editor */}
         <Editor
           value={content}
           onTextChange={(e) => setContent(e.htmlValue)}
           style={{ height: "320px" }}
-          placeholder="Write your blog content here..."
+          placeholder="Start writing your blog..."
         />
       </div>
-
-      <button className="blog-btn">Publish Blog</button>
+      {/* Sumbit Button */}
+      <button onClick={handleSave} className="publish-btn">
+        Publish
+      </button>
     </div>
   );
 }

@@ -58,7 +58,7 @@ const WeatherCard = () => {
               {/* <span>Exhibitions: Product, Nesco, Mumbai</span> */}
               <a
                 href="#"
-                target="_blank"
+                
                 rel="noopener noreferrer"
                 className="text-decoration-none text-dark"
               >

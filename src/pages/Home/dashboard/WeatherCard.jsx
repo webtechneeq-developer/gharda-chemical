@@ -68,14 +68,14 @@ const WeatherCard = () => {
             </div>
           </div>
         ))}
-        <a
+{/*         <a
           href="https://animetrixlabs.com/knowledgecentre/events/"
           className="view-more"
           target="_blank"
           rel="noopener noreferrer"
         >
           View More-
-        </a>
+        </a> */}
       </div>
     </div>
   );

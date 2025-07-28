@@ -57,7 +57,7 @@ const WeatherCard = () => {
             <div className="content">
               {/* <span>Exhibitions: Product, Nesco, Mumbai</span> */}
               <a
-                href="https://animetrixlabs.com/knowledgecentre/event/exhibitions-product-nesco-mumbai/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-decoration-none text-dark"

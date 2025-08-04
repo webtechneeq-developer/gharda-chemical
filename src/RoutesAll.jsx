@@ -20,6 +20,7 @@ import KnowledgeCenter from "./pages/knowledgeCenter/knowledgeCenter";
 import BlogContainer from "./pages/knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 import BlogEditor from "./pages/BlogEditor/components/BlogEditor";
 import Blog from "./pages/BlogEditor/Blog";
+import GhardaUnplugged from "./pages/GhardaUnplugged/GhardaUnplugged";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -89,6 +90,10 @@ const RoutesAll = () => {
         {
           path: "edit-blog",
           element: <Blog />,
+        },
+        {
+          path: "gharda-unplugged",
+          element: <GhardaUnplugged />,
         },
       ],
     },

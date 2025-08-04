@@ -21,7 +21,7 @@ const KnowledgeCenter = () => {
   );
   const [categoriesRaw, setCategoriesRaw] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
-  const [activeTab, setActiveTab] = useState("text"); // "text" | "pdf"
+  const [activeTab, setActiveTab] = useState("post"); // "text" | "pdf"
 
   // Helper: Convert category name to slug
   const getSlug = (name) => name.toLowerCase().replace(/\s+/g, "_");
@@ -112,28 +112,34 @@ const KnowledgeCenter = () => {
 
       <Blog />
 
-      <div className="tab-header container">
-        <span
-          className={`tab-btn ${activeTab === "text" ? "active" : ""}`}
-          onClick={() => setActiveTab("text")}
-          style={{ cursor: "pointer" }}
-        >
-          Blogs
-        </span>
-        <span
-          className={`tab-btn ${activeTab === "video" ? "active" : ""}`}
-          onClick={() => setActiveTab("video")}
-          style={{ cursor: "pointer" }}
-        >
-          Video
-        </span>
-        <span
-          className={`tab-btn ${activeTab === "pdf" ? "active" : ""}`}
-          onClick={() => setActiveTab("pdf")}
-          style={{ cursor: "pointer" }}
-        >
-          PDF
-        </span>
+      <div className="container">
+        <div class="filter-tab">
+          <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
+            <ul class="quick-filters-tabs menu-list d-md-block">
+              <li
+                className={`tab-btn ${activeTab === "post" ? "active" : ""}`}
+                onClick={() => setActiveTab("post")}
+                style={{ cursor: "pointer" }}
+              >
+                <a>Posts</a>
+              </li>
+              <li
+                className={`tab-btn ${activeTab === "video" ? "active" : ""}`}
+                onClick={() => setActiveTab("video")}
+                style={{ cursor: "pointer" }}
+              >
+                <a>Videos</a>
+              </li>
+              <li
+                className={`tab-btn ${activeTab === "pdf" ? "active" : ""}`}
+                onClick={() => setActiveTab("pdf")}
+                style={{ cursor: "pointer" }}
+              >
+                <a>Pdf</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div className="container main-container">

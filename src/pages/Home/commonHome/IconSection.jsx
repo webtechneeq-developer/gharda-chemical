@@ -6,7 +6,7 @@ const items = [
     title: "Gharda Unplugged",
     icon: "/images/Companywide.svg",
     bgColor: "#ffe5e5",
-    link: "https://animetrixlabs.com/knowledgecentre/",
+    link: "/gharda-unplugged",
   },
   {
     title: "Forums",

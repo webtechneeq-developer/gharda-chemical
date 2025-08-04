@@ -21,6 +21,7 @@ import BlogContainer from "./pages/knowledgeCenter/knowledgeCenterComponents/Sin
 import BlogEditor from "./pages/BlogEditor/components/BlogEditor";
 import Blog from "./pages/BlogEditor/Blog";
 import GhardaUnplugged from "./pages/GhardaUnplugged/GhardaUnplugged";
+import CompanyAnnouncement from "./pages/CompanyAnnouncement/CompanyAnnouncement";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -94,6 +95,10 @@ const RoutesAll = () => {
         {
           path: "gharda-unplugged",
           element: <GhardaUnplugged />,
+        },
+        {
+          path: "company-announcement",
+          element: <CompanyAnnouncement />,
         },
       ],
     },

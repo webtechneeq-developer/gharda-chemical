@@ -37,14 +37,14 @@ function HeroBanner() {
                 onClick={() => setActiveTab("hobbies")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Hobbies & Passions</a>
+                <a>General </a>
               </li>
               <li
                 className={`tab-btn ${activeTab === "recipes" ? "active" : ""}`}
                 onClick={() => setActiveTab("recipes")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Recipes & Culinary Stories</a>
+                <a>Awards & Certification</a>
               </li>
               <li
                 className={`tab-btn ${
@@ -53,28 +53,44 @@ function HeroBanner() {
                 onClick={() => setActiveTab("traditions")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Family Traditions</a>
+                <a>HR Updates</a>
               </li>
               <li
                 className={`tab-btn ${activeTab === "blogs" ? "active" : ""}`}
                 onClick={() => setActiveTab("blogs")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Blogs</a>
+                <a>Products </a>
               </li>
               <li
                 className={`tab-btn ${activeTab === "desk" ? "active" : ""}`}
                 onClick={() => setActiveTab("desk")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Leader's Desk</a>
+                <a>Informal Announcements related to lifestyle</a>
               </li>
               <li
-                className={`tab-btn ${activeTab === "success" ? "active" : ""}`}
-                onClick={() => setActiveTab("success")}
+                className={`tab-btn ${activeTab === "updates" ? "active" : ""}`}
+                onClick={() => setActiveTab("updates")}
                 style={{ cursor: "pointer" }}
               >
-                <a>Success Stories</a>
+                <a>GARC Updates</a>
+              </li>
+              <li
+                className={`tab-btn ${activeTab === "school" ? "active" : ""}`}
+                onClick={() => setActiveTab("school")}
+                style={{ cursor: "pointer" }}
+              >
+                <a>New school </a>
+              </li>
+              <li
+                className={`tab-btn ${
+                  activeTab === "admissions" ? "active" : ""
+                }`}
+                onClick={() => setActiveTab("admissions")}
+                style={{ cursor: "pointer" }}
+              >
+                <a>Admissions etc</a>
               </li>
             </ul>
           </div>

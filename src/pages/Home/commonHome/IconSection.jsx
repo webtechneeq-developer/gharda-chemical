@@ -24,7 +24,7 @@ const items = [
     title: "Company Annoucement",
     icon: "/images/announcement.webp",
     bgColor: "#d9f5db",
-    link: "https://animetrixlabs.com/knowledgecentre/category/company-annoucement/",
+    link: "/company-announcement",
   },
   {
     title: "Content Bank",

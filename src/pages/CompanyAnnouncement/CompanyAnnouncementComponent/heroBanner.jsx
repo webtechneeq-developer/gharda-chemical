@@ -20,7 +20,7 @@ function HeroBanner() {
             ></img>
           </div>
           <div className="media-body">
-            <h3 className="item-title">Employees Newsfeed</h3>
+            <h3 className="item-title">Company Announcement</h3>
             <p>
               Check what your Collegues at Gharda Chemicals have been up to!
             </p>

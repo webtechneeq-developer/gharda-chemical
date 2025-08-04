@@ -9,7 +9,7 @@ function HeroBanner() {
   const [activeTab, setActiveTab] = useState("hobbies"); // "text" | "pdf"
 
   return (
-    <div className="container">
+    <div className="">
       <div className="newsfeed-banner">
         <div className="media">
           <div className="item-icon">
@@ -20,7 +20,7 @@ function HeroBanner() {
             ></img>
           </div>
           <div className="media-body">
-            <h3 className="item-title">Gharda Unplugged</h3>
+            <h3 className="item-title">Content Bank</h3>
             <p>
               Check what your Collegues at Gharda Chemicals have been up to!
             </p>
@@ -28,7 +28,7 @@ function HeroBanner() {
         </div>
       </div>
 
-      <div className="">
+      {/* <div className="">
         <div class="filter-tab">
           <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
             <ul class="quick-filters-tabs menu-list d-md-block">
@@ -79,7 +79,7 @@ function HeroBanner() {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <div class="activity-item type-activity_update" id="activity-694">
         <div class="block-box post-view">

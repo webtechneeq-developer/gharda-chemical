@@ -4,6 +4,7 @@ import {
   ContentBankCard,
   ContentBankCardGeneral,
 } from "./contentBankComponents/contentBankCard";
+import HeroBanner from "./contentBankComponents/heroBanner";
 
 const companyPolicy = {
   title: "Company Policies",
@@ -119,7 +120,7 @@ const ContentBank = () => {
 
   return (
     <div className="container content-bank-container">
-      <h2 className="title">Content Bank - Download</h2>
+      <HeroBanner />
 
       <div className="all-box">
         <div className="container-content">

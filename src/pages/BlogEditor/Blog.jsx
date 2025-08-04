@@ -4,6 +4,7 @@ import axios from "axios";
 import BlogEditor from "./components/BlogEditor";
 import PdfDropzone from "./components/PdfDropBox";
 import "./Blog.css"; // We'll use this for styling the tabs
+import VideoUploader from "./components/VideoEditor";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
@@ -36,11 +37,19 @@ function Blog() {
         >
           PDF
         </span>
+        <span
+          className={`tab-btn ${activeTab === "video" ? "active" : ""}`}
+          onClick={() => setActiveTab("video")}
+          style={{ cursor: "pointer" }}
+        >
+          Video
+        </span>
       </div>
 
       <div className="tab-content">
         {activeTab === "text" && <BlogEditor />}
         {activeTab === "pdf" && <PdfDropzone />}
+        {activeTab === "video" && <VideoUploader />}
       </div>
 
       <hr />

@@ -8,6 +8,7 @@ import { useApi } from "../../hooks/useApi";
 import { useNavigate, useParams } from "react-router-dom";
 import BlogContainer from "../knowledgeCenter/knowledgeCenterComponents/SingleBlogPost";
 import BlogList from "../BlogEditor/components/BlogList";
+import PostActions from "./PostActionsProps";
 
 const AdminPostDetails = () => {
   const { id } = useParams();
@@ -128,6 +129,8 @@ const AdminPostDetails = () => {
                 />
                )} 
                     {/*  ))} */}
+
+            <PostActions />
           </Card>
         </div>
 

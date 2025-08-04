@@ -42,6 +42,8 @@ function Blog() {
         {activeTab === "text" && <BlogEditor />}
         {activeTab === "pdf" && <PdfDropzone />}
       </div>
+
+      <hr />
     </div>
   );
 }

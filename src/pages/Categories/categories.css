@@ -5,6 +5,7 @@
 .post-card {
   transition: all 0.3s ease;
   overflow: hidden;
+  padding: 20px;
   /* padding-left: 20px;
   padding-right: 20px; */
 }

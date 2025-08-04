@@ -57,8 +57,8 @@ const WeatherCard = () => {
             <div className="content">
               {/* <span>Exhibitions: Product, Nesco, Mumbai</span> */}
               <a
-                href="https://animetrixlabs.com/knowledgecentre/event/exhibitions-product-nesco-mumbai/"
-                target="_blank"
+                href="#"
+                
                 rel="noopener noreferrer"
                 className="text-decoration-none text-dark"
               >
@@ -68,14 +68,14 @@ const WeatherCard = () => {
             </div>
           </div>
         ))}
-        <a
+{/*         <a
           href="https://animetrixlabs.com/knowledgecentre/events/"
           className="view-more"
           target="_blank"
           rel="noopener noreferrer"
         >
           View More-
-        </a>
+        </a> */}
       </div>
     </div>
   );

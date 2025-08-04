@@ -8,6 +8,9 @@ import PostHeader from "../Categories/PostHeaderProps";
 import PostContent from "../Categories/PostContentProps";
 import PostActions from "../Categories/PostActionsProps";
 import Blog from "../BlogEditor/Blog";
+import BlogPosts from "./knowledgeCenterComponents/Blogpost";
+import VideoPosts from "./knowledgeCenterComponents/VideoPost";
+import DownloadButton from "./knowledgeCenterComponents/downloadButton";
 
 const KnowledgeCenter = () => {
   const params = useParams();
@@ -165,7 +168,7 @@ const KnowledgeCenter = () => {
         </div>
 
         {/* Posts */}
-        {showSelectedPost.map((data) => (
+        {/* {showSelectedPost.map((data) => (
           <Card key={data.id} className="post-card mb-sm-5 mb-4 border-0">
             <PostHeader
               username={data.username}
@@ -180,7 +183,14 @@ const KnowledgeCenter = () => {
             </div>
             <PostActions isLiked={isLiked} onLike={handleLike} />
           </Card>
-        ))}
+        ))} */}
+
+        {/* Conditionally Render Content */}
+        <div className="content">
+          {activeTab === "post" && <BlogPosts />}
+          {activeTab === "video" && <VideoPosts />}
+          {activeTab === "pdf" && <DownloadButton />}
+        </div>
       </div>
     </div>
   );

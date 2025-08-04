@@ -3,13 +3,13 @@ import React from "react";
 const DownloadButton = () => {
   return (
     <div className="container download-button-wrapper">
-      <div
+      {/* <div
         className="d-flex align-items-center "
         style={{ paddingBottom: "2rem" }}
       >
         <div className="text-danger-dot"></div>
         <h5 className="mb-0">Download PDF</h5>
-      </div>
+      </div> */}
       <div className="flex">
         <div class="card  flex-row post-card post-card-width h-100">
           <div class="card-body d-flex flex-column justify-content-between p-0">

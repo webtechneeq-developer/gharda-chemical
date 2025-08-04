@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 // import './LatestPosts.css';
 import DOMPurify from "dompurify";
+import PostActions from "../../Categories/PostActionsProps";
 import { useNavigate } from "react-router-dom";
 
 const BlogPostCard = ({
@@ -30,7 +31,7 @@ const BlogPostCard = ({
 
   return (
     <div className="post-card-main">
-      <div className="card  flex-row post-card h-100">
+      <div className="card   post-card h-100">
         <img
           src={image}
           alt={title}
@@ -40,6 +41,22 @@ const BlogPostCard = ({
         />
         <div className="card-body d-flex flex-column justify-content-between p-0">
           <div>
+            <div className="d-flex justify-content-between align-items-center mt-4">
+              <div className="d-flex align-items-center">
+                <img
+                  src={avatar}
+                  alt={username}
+                  className="rounded-avtar-image "
+                  width="44"
+                  height="44"
+                />
+                <div>
+                  <small className="fw-semibold d-block">{username}</small>
+                  <small className="text-muted">{created_at}</small>
+                </div>
+              </div>
+              <BookmarkIcon className="hero-icon" />
+            </div>
             {/* <h6 className="card-title fw-semibold mb-1">{title}</h6> */}
             <h6
               className="card-title fw-semibold "
@@ -78,23 +95,8 @@ const BlogPostCard = ({
               ></p>
             )}
           </div>
-          <div className="d-flex justify-content-between align-items-center author-box">
-            <div className="d-flex align-items-center">
-              <img
-                src={avatar}
-                alt={username}
-                className="rounded-avtar-image "
-                width="44"
-                height="44"
-              />
-              <div>
-                <small className="fw-semibold d-block">{username}</small>
-                <small className="text-muted">{created_at}</small>
-              </div>
-            </div>
-            <BookmarkIcon className="hero-icon" />
-          </div>
         </div>
+        <PostActions />
       </div>
     </div>
   );

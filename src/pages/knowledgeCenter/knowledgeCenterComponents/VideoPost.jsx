@@ -103,7 +103,7 @@ const VideoPosts = () => {
 
   return (
     <div className="container latest-post-wrapper">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      {/* <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center ">
           <div className="text-danger-dot"></div>
           <h5 className="mb-0">Video Posts</h5>
@@ -117,12 +117,12 @@ const VideoPosts = () => {
             style={{ width: "16px", height: "16px", color: "#3E323280" }}
           />
         </button>
-      </div>
+      </div> */}
 
-      <div className="row">
+      <div className="">
         {videoPosts?.map((post) => (
           <div
-            className="col-lg-6 d-flex flex-column gap-4"
+            className="col-lg-12 d-flex flex-column gap-4"
             key={post.id}
             style={{ marginBottom: "16px" }}
           >

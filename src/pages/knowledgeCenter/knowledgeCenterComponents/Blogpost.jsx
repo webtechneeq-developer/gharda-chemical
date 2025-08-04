@@ -21,6 +21,19 @@ const postsLeft = [
       "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg",
     url: "/chemical-blogs",
   },
+  {
+    id: 2,
+    image: greenLiving,
+    short_description:
+      "Things move quickly in the mobile app universe. To succeed in the field of mobile UX design, designers must have the foresight and prepare for new challenges around the corner",
+    title: "Green Living",
+    username: " Amar​",
+    author: "Posted by Amar​",
+    created_at: "July 14, 2022",
+    avatar:
+      "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg",
+    url: "/chemical-blogs",
+  },
 ];
 
 const BlogPosts = () => {
@@ -74,7 +87,7 @@ const BlogPosts = () => {
       <div className="row">
         {postsLeft?.map((post) => (
           <div
-            className="col-lg-12 d-flex flex-column gap-4"
+            className="col-lg-6 d-flex flex-column gap-4"
             key={post.id}
             style={{ marginBottom: "16px" }}
           >

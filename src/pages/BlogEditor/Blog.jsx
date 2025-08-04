@@ -8,7 +8,7 @@ import VideoUploader from "./components/VideoEditor";
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
-  const [activeTab, setActiveTab] = useState("text"); // "text" | "pdf"
+  const [activeTab, setActiveTab] = useState(""); // "text" | "pdf"
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -24,8 +24,8 @@ function Blog() {
 
       <div className="tab-header">
         <span
-          className={`tab-btn ${activeTab === "text" ? "active" : ""}`}
-          onClick={() => setActiveTab("text")}
+          className={`tab-btn ${activeTab === "post" ? "active" : ""}`}
+          onClick={() => setActiveTab("post")}
           style={{ cursor: "pointer" }}
         >
           Text
@@ -47,7 +47,7 @@ function Blog() {
       </div>
 
       <div className="tab-content">
-        {activeTab === "text" && <BlogEditor />}
+        {activeTab === "post" && <BlogEditor />}
         {activeTab === "pdf" && <PdfDropzone />}
         {activeTab === "video" && <VideoUploader />}
       </div>

@@ -11,6 +11,7 @@ import Blog from "../BlogEditor/Blog";
 import BlogPosts from "./knowledgeCenterComponents/Blogpost";
 import VideoPosts from "./knowledgeCenterComponents/VideoPost";
 import DownloadButton from "./knowledgeCenterComponents/downloadButton";
+import { set } from "react-hook-form";
 
 const KnowledgeCenter = () => {
   const params = useParams();

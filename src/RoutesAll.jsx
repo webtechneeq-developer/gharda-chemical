@@ -33,6 +33,26 @@ const RoutesAll = () => {
           element: <Home />,
         },
         {
+          path: "content-bank",
+          element: <ContentBank />,
+        },
+        {
+          path: "knowledge-center",
+          element: <KnowledgeCenter />,
+        },
+        {
+          path: "edit-blog",
+          element: <Blog />,
+        },
+        {
+          path: "gharda-unplugged",
+          element: <GhardaUnplugged />,
+        },
+        {
+          path: "company-announcement",
+          element: <CompanyAnnouncement />,
+        },
+        {
           path: "/singlePost/:id",
           element: <BlogContainer />,
         },
@@ -79,26 +99,6 @@ const RoutesAll = () => {
         {
           path: "*",
           element: <NotFound />,
-        },
-        {
-          path: "content-bank",
-          element: <ContentBank />,
-        },
-        {
-          path: "knowledge-center",
-          element: <KnowledgeCenter />,
-        },
-        {
-          path: "edit-blog",
-          element: <Blog />,
-        },
-        {
-          path: "gharda-unplugged",
-          element: <GhardaUnplugged />,
-        },
-        {
-          path: "company-announcement",
-          element: <CompanyAnnouncement />,
         },
       ],
     },

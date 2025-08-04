@@ -106,7 +106,7 @@ const KnowledgeCenter = () => {
   return (
     <div
       className="container main-container"
-      style={{ width: "60%", margin: "0 auto" }}
+      style={{ width: "100%", margin: "0 auto" }}
     >
       <HeroSlider />
 

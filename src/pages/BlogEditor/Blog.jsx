@@ -20,9 +20,9 @@ function Blog() {
 
   return (
     <div className="container content-bank-container max-w-4xl mx-auto py-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Article Publisher</h1>
+      <h1 className="text-xl font-bold text-center mb-6">Article Publisher</h1>
 
-      <div className="tab-header">
+      {/* <div className="tab-header">
         <span
           className={`tab-btn ${activeTab === "post" ? "active" : ""}`}
           onClick={() => setActiveTab("post")}
@@ -44,12 +44,10 @@ function Blog() {
         >
           Video
         </span>
-      </div>
+      </div> */}
 
       <div className="tab-content">
-        {activeTab === "post" && <BlogEditor />}
-        {activeTab === "pdf" && <PdfDropzone />}
-        {activeTab === "video" && <VideoUploader />}
+        <BlogEditor />
       </div>
 
       <hr />

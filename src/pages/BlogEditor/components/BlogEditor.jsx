@@ -1,63 +1,45 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { Editor } from "primereact/editor";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
-import "./BlogEditor.css"; // ← Import the CSS
-import { FaPaperclip } from "react-icons/fa"; // You can use any icon
+import { FaVideo, FaImage, FaRegNewspaper } from "react-icons/fa";
+import BlogEditor from "./BlogEditor";
+import "./BlogEditor.css";
+import CreatePost from "./CreatePost";
+import { FaTimes, FaSmile, FaCalendarAlt, FaCog, FaPlus } from "react-icons/fa";
 
-export default function BlogEditor() {
+export default function PostComposer() {
+  const [showEditor, setShowEditor] = useState(false);
   const [content, setContent] = useState("");
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (e) => {
-    const uploadedFile = e.target.files[0];
-    setFile(uploadedFile);
-  };
-
-  const handleIconClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleSave = async () => {
-    if (!content) return alert("Please fill all fields");
-
-    const formData = new FormData();
-    formData.append("content", content);
-    if (file) formData.append("attachment", file);
-
-    try {
-      const res = await axios.post("http://localhost:4000/api/blog", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      console.log("Blog saved:", res.data);
-      alert("Blog published!");
-      setContent("");
-      setFile(null);
-    } catch (err) {
-      console.error(err);
-      alert("Failed to publish blog");
-    }
-  };
 
   return (
-    <div>
-      <div className="p-6 max-w-4xl mx-auto space-y-6 bg-white rounded-xl">
-        {/* Title input */}
-
-        {/* Rich text editor */}
-        <Editor
-          value={content}
-          onTextChange={(e) => setContent(e.htmlValue)}
-          style={{ height: "320px" }}
-          placeholder="Start writing your blog..."
-        />
+    <>
+      <div className="composer-box">
+        <div className="composer-header">
+          <div className="avatar" />
+          <input
+            type="text"
+            className="start-post"
+            placeholder="Start a post"
+            onClick={() => setShowEditor(true)}
+            readOnly
+          />
+        </div>
+        <div className="composer-actions">
+          <button onClick={() => setShowEditor(true)}>
+            <FaVideo className="icon video" />
+            Video
+          </button>
+          <button onClick={() => setShowEditor(true)}>
+            <FaImage className="icon photo" />
+            Photo
+          </button>
+          <button onClick={() => setShowEditor(true)}>
+            <FaRegNewspaper className="icon article" />
+            Write article
+          </button>
+        </div>
       </div>
-      {/* Sumbit Button */}
-      <button onClick={handleSave} className="publish-btn">
-        Publish
-      </button>
-    </div>
+
+      {/* Modal for Blog Editor */}
+      {showEditor && <CreatePost onClose={() => setShowEditor(false)} />}
+    </>
   );
 }

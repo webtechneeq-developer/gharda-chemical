@@ -8,7 +8,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-const PostActions = ({ isLiked, onLike }) => {
+const PostActions = ({ isLiked, onLike, onComment }) => {
   return (
     <div className="post-actions mt_20">
       <Row className="gx-4">
@@ -26,9 +26,13 @@ const PostActions = ({ isLiked, onLike }) => {
           </button>
         </Col>
         <Col xs="auto">
-          <button className="action-button" aria-label="Comment">
+          <button
+            className="action-button"
+            aria-label="Comment"
+            onClick={onComment}
+          >
             <img
-              src="/images/comment-image.svg" 
+              src="/images/comment-image.svg"
               alt="Comment"
               style={{ width: 20, height: 20 }}
             />

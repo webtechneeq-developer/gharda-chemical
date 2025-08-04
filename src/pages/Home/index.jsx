@@ -8,6 +8,7 @@ import CategorySlider from "./categorySlider/CategorySlider";
 import LatestPosts from "./commonHome/LatestPosts";
 import OfficeLocations from "./commonHome/OfficeLocations";
 import ArticleList from "../../components/article-List/ArticleList";
+import BlogPosts from "../knowledgeCenter/knowledgeCenterComponents/Blogpost";
 
 // import Navbar from '../../components/navbar/Navbar';
 
@@ -26,7 +27,7 @@ const Home = () => {
       {/* <CategorySlider /> */}
 
       {/* LatestPosts start */}
-      <LatestPosts />
+      <BlogPosts />
 
       {/* OfficeLocations */}
       <OfficeLocations />

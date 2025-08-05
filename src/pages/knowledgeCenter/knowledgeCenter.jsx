@@ -121,53 +121,30 @@ const KnowledgeCenter = () => {
         <div class="filter-tab">
           <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
             <ul class="quick-filters-tabs menu-list d-md-block">
-              <li
-                className={`tab-btn ${activeTab === "post" ? "active" : ""}`}
-                onClick={() => setActiveTab("post")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Posts</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "video" ? "active" : ""}`}
-                onClick={() => setActiveTab("video")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Videos</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "pdf" ? "active" : ""}`}
-                onClick={() => setActiveTab("pdf")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Pdf</a>
-              </li>
+              {categories.map((category) => (
+                <li
+                  key={category.slug}
+                  className={`tab-btn`}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate(`/categories/${category.slug}`);
+                  }}
+                >
+                  <a>
+                    {selectedCategorySlug === category.slug && (
+                      <Check size={16} className="check-icon" />
+                    )}{" "}
+                    {category.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="container main-container">
+      <div className="container">
         {/* Category Filter */}
-        <div className="categories-row">
-          {categories.map((category) => (
-            <div key={category.slug} className="category-item-wrapper">
-              <button
-                className={`category-item ${
-                  selectedCategorySlug === category.slug ? "active" : ""
-                }`}
-                onClick={() => {
-                  navigate(`/categories/${category.slug}`);
-                }}
-              >
-                {selectedCategorySlug === category.slug && (
-                  <Check size={16} className="check-icon" />
-                )}
-                {category.name}
-              </button>
-            </div>
-          ))}
-        </div>
 
         {/* Posts */}
         {/* {showSelectedPost.map((data) => (

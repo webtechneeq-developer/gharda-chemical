@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
-import { FaFileAlt } from "react-icons/fa";
+import { FaFileAlt, FaLink } from "react-icons/fa";
 import "./BlogEditor.css";
 import EmojiPicker from "emoji-picker-react";
 import EmojiPickerModal from "./EmojiPicker";
+import LinkModal from "./LinkModal";
 
 export default function PhotoPost({ onClose }) {
   const [attachments, setAttachments] = useState([]);
@@ -10,6 +11,7 @@ export default function PhotoPost({ onClose }) {
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
   const [showPicker, setShowPicker] = useState(false);
+  const [showLinkModal, setShowLinkModal] = useState(false);
 
   const textareaRef = useRef(null);
 
@@ -29,6 +31,24 @@ export default function PhotoPost({ onClose }) {
       }, 0);
     } else {
       setContent((prev) => prev + emoji);
+    }
+  };
+
+  const handleLinkInsert = (link) => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const newText =
+        content.substring(0, start) + link + " " + content.substring(end);
+      setContent(newText);
+      setTimeout(() => {
+        textarea.selectionStart = textarea.selectionEnd =
+          start + link.length + 1;
+        textarea.focus();
+      }, 0);
+    } else {
+      setContent((prev) => prev + link);
     }
   };
 
@@ -90,13 +110,52 @@ export default function PhotoPost({ onClose }) {
             />
           </div>
 
-          <span
-            class="💀"
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowPicker((val) => !val)}
+          <div
+            className="extra-btn"
+            style={{
+              display: "flex",
+              gap: "8px",
+              marginTop: "8px",
+            }}
           >
-            😐
-          </span>
+            <button
+              style={{
+                background: "#f0f0f0",
+                border: "none",
+                padding: "6px 10px",
+                borderRadius: "50%",
+                cursor: "pointer",
+                fontSize: "18px",
+                transition: "all 0.2s ease",
+              }}
+              onMouseOver={(e) => (e.target.style.background = "#e0e0e0")}
+              onMouseOut={(e) => (e.target.style.background = "#f0f0f0")}
+              onClick={() => setShowPicker(true)}
+            >
+              😊
+            </button>
+
+            <button
+              style={{
+                border: "none",
+                padding: "6px 10px",
+                borderRadius: "50%",
+                cursor: "pointer",
+                fontSize: "16px",
+                transition: "all 0.2s ease",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              onMouseOver={(e) => (e.target.style.background = "#e0e0e0")}
+              onMouseOut={(e) => (e.target.style.background = "#f0f0f0")}
+              onClick={() => setShowLinkModal(true)}
+            >
+              <FaLink />
+            </button>
+          </div>
+
+          <br />
 
           {/* File Upload */}
           <div className="mb-3">
@@ -206,6 +265,13 @@ export default function PhotoPost({ onClose }) {
         </div>
       </div>
       {showPicker && <EmojiPickerModal onSelect={onEmojiClick} />}
+
+      {showLinkModal && (
+        <LinkModal
+          onInsert={handleLinkInsert}
+          onClose={() => setShowLinkModal(false)}
+        />
+      )}
     </div>
   );
 }

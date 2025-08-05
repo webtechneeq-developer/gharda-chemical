@@ -50,7 +50,7 @@ function Blog() {
         <BlogEditor />
       </div>
 
-      <hr />
+      <br />
     </div>
   );
 }

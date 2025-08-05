@@ -15,7 +15,9 @@ const Categories = () => {
 
   const [allPosts, setAllPosts] = useState([]);
   const [showSelectedPost, setShowSelectedPost] = useState([]);
-  const [selectedCategorySlug, setSelectedCategorySlug] = useState(params.name || "all");
+  const [selectedCategorySlug, setSelectedCategorySlug] = useState(
+    params.name || "all"
+  );
   const [categoriesRaw, setCategoriesRaw] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -53,15 +55,15 @@ const Categories = () => {
           const data = res?.data?.data || [];
           setAllPosts(data);
 
-          const uniqueNames = Array.from(new Set(data.map((p) => p.category_name)));
+          const uniqueNames = Array.from(
+            new Set(data.map((p) => p.category_name))
+          );
           const paramSlug = params.name;
           const paramNameFromSlug = paramSlug
             ? paramSlug.replace(/_/g, " ").toLowerCase()
             : "";
 
-          const match = uniqueNames.find(
-            (name) => getSlug(name) === paramSlug
-          );
+          const match = uniqueNames.find((name) => getSlug(name) === paramSlug);
 
           // Add category from param if not in list but exists in data
           if (!match && paramNameFromSlug) {
@@ -105,24 +107,30 @@ const Categories = () => {
 
       <div className="container main-container">
         {/* Category Filter */}
-        <div className="categories-row">
-          {categories.map((category) => (
-            <div key={category.slug} className="category-item-wrapper">
-              <button
-                className={`category-item ${
-                  selectedCategorySlug === category.slug ? "active" : ""
-                }`}
-                onClick={() => {
-                  navigate(`/categories/${category.slug}`);
-                }}
-              >
-                {selectedCategorySlug === category.slug && (
-                  <Check size={16} className="check-icon" />
-                )}
-                {category.name}
-              </button>
+        <div className="container">
+          <div class="filter-tab">
+            <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
+              <ul class="quick-filters-tabs menu-list d-md-block">
+                {categories.map((category) => (
+                  <li
+                    key={category.slug}
+                    className={`tab-btn`}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate(`/categories/${category.slug}`);
+                    }}
+                  >
+                    <a>
+                      {selectedCategorySlug === category.slug && (
+                        <Check size={16} className="check-icon" />
+                      )}{" "}
+                      {category.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Posts */}

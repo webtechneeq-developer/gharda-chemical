@@ -814,3 +814,175 @@ margin-left: 3px;
 .btn-success-soft:hover {
   background: rgba(25, 135, 84, 0.2);
 }
+
+.feed-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.feed-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feed-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.feed-username {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.feed-job {
+  margin: 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.feed-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.feed-body {
+  margin-top: 10px;
+}
+
+.feed-text {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.feed-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.feed-video {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.feed-doc {
+  display: inline-block;
+  background: #eef5ff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #007bff;
+  margin-top: 8px;
+}
+
+.feed-feeling {
+  display: inline-block;
+  background: #fff3cd;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.feed-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.feed-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.feed-btn:hover {
+  color: #007bff;
+}
+
+.feed-btn-right {
+  margin-left: auto;
+}
+
+.feed-comment-box {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.feed-comment-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.feed-comment-input {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 13px;
+}
+
+.feed-comment-send {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.feeling-badge {
+  display: inline-block;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.emoji-icon {
+  width: 20px;
+}
+
+.emoji-container {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 35%;
+}
+
+.💀 {
+  font-size: 20px;
+}
+

@@ -1,12 +1,36 @@
 import React, { useState, useRef } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import "./BlogEditor.css";
+import EmojiPicker from "emoji-picker-react";
+import EmojiPickerModal from "./EmojiPicker";
 
 export default function PhotoPost({ onClose }) {
   const [attachments, setAttachments] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
+  const [showPicker, setShowPicker] = useState(false);
+
+  const textareaRef = useRef(null);
+
+  const onEmojiClick = (emoji) => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const newText =
+        content.substring(0, start) + emoji + " " + content.substring(end);
+      setContent(newText);
+
+      setTimeout(() => {
+        textarea.selectionStart = textarea.selectionEnd =
+          start + emoji.length + 1;
+        textarea.focus();
+      }, 0);
+    } else {
+      setContent((prev) => prev + emoji);
+    }
+  };
 
   const placeholderAvatar =
     "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg";
@@ -60,11 +84,19 @@ export default function PhotoPost({ onClose }) {
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
-              rows={8}
+              rows={4}
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
+
+          <span
+            class="💀"
+            style={{ cursor: "pointer" }}
+            onClick={() => setShowPicker((val) => !val)}
+          >
+            😐
+          </span>
 
           {/* File Upload */}
           <div className="mb-3">
@@ -173,6 +205,7 @@ export default function PhotoPost({ onClose }) {
           </button>
         </div>
       </div>
+      {showPicker && <EmojiPickerModal onSelect={onEmojiClick} />}
     </div>
   );
 }

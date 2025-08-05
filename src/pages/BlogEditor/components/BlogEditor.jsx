@@ -19,6 +19,8 @@ export default function PostComposer() {
   const [documentPost, setDocumentPost] = useState(false);
   const [content, setContent] = useState("");
 
+  console.log("Get Raw Blog Post Data", content);
+
   return (
     <>
       <div className="card-body card">
@@ -37,6 +39,8 @@ export default function PostComposer() {
               className="form-control pe-4 border-0"
               rows="2"
               placeholder="Share your thoughts..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             ></textarea>
           </form>
         </div>

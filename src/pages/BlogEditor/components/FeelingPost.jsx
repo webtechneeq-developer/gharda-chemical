@@ -2,26 +2,33 @@ import React, { useState, useRef } from "react";
 import "./BlogEditor.css";
 
 export default function CreateFeelingModal({ onClose }) {
-  const [text, setText] = useState(""); // State for textarea
-  const textareaRef = useRef(null); // Ref for placing cursor
+  const [text, setText] = useState("");
+  const [selectedFeeling, setSelectedFeeling] = useState(null);
+  const textareaRef = useRef(null);
 
-  // Function to add emoji into textarea
-  const addEmoji = (emoji) => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const newText =
-        text.substring(0, start) + emoji + " " + text.substring(end);
-      setText(newText);
+  // Handle feeling click — replace emoji if already exists
+  const handleFeelingClick = (emoji, feeling) => {
+    setSelectedFeeling({ emoji, feeling });
 
-      // Move cursor after emoji
-      setTimeout(() => {
-        textarea.selectionStart = textarea.selectionEnd =
-          start + emoji.length + 1;
-        textarea.focus();
-      }, 0);
-    }
+    // Remove old feeling emoji if exists (only one at a time)
+    let updatedText = text;
+
+    // Regex to remove any emoji at the start of text
+    updatedText = updatedText.replace(
+      /^[\p{Emoji_Presentation}\p{Emoji}\s]+/u,
+      ""
+    );
+
+    // Add new emoji at the start
+    const newText = `${emoji} ${updatedText}`;
+    setText(newText);
+
+    // Focus back on textarea
+    setTimeout(() => {
+      textareaRef.current?.focus();
+      textareaRef.current.selectionStart = textareaRef.current.selectionEnd =
+        newText.length;
+    }, 0);
   };
 
   return (
@@ -29,21 +36,21 @@ export default function CreateFeelingModal({ onClose }) {
       <div className="modal-content">
         {/* Modal Header */}
         <div className="modal-header">
-          <h5 className="modal-title" id="modalLabelCreateFeed">
-            Share Your Thoughts
-          </h5>
-          <span
-            type="button"
-            className="btn-close"
-            aria-label="Close"
-            onClick={onClose}
-          >
+          <h5 className="modal-title">Share Your Thoughts</h5>
+          <span className="btn-close" onClick={onClose}>
             x
           </span>
         </div>
 
         {/* Modal Body */}
         <div className="modal-body">
+          {/* Selected Feeling Badge */}
+          {selectedFeeling && (
+            <div className="feeling-badge">
+              {selectedFeeling.emoji} {selectedFeeling.feeling}
+            </div>
+          )}
+
           {/* User avatar + textarea */}
           <div className="photomodal-user-row">
             <textarea
@@ -59,21 +66,25 @@ export default function CreateFeelingModal({ onClose }) {
           {/* Emoji Icons */}
           <div className="action-icons hstack gap-2 mb-3">
             {[
-              { bg: "success", icon: "🙁" },
-              { bg: "info", icon: "🥳" },
-              { bg: "danger", icon: "📅" },
-              { bg: "warning", icon: "😊" },
-              { bg: "light", icon: "📍" },
-              { bg: "primary", icon: "🎥" },
+              { bg: "success", icon: "🙁", feeling: "Feeling Sad" },
+              { bg: "info", icon: "🥳", feeling: "Feeling Celebrating" },
+              { bg: "danger", icon: "📅", feeling: "Feeling Busy" },
+              { bg: "warning", icon: "😊", feeling: "Feeling Happy" },
+              { bg: "light", icon: "📍", feeling: "Feeling Lost" },
+              { bg: "primary", icon: "🎥", feeling: "Feeling Joy" },
             ].map((item, index) => (
               <span
                 key={index}
-                onClick={() => addEmoji(item.icon)}
+                onClick={() => handleFeelingClick(item.icon, item.feeling)}
                 className={`icon-md bg-${item.bg} bg-opacity-10 text-${item.bg} rounded-circle cursor-pointer`}
                 style={{
                   fontSize: "1.5rem",
                   padding: "0.5rem",
                   cursor: "pointer",
+                  border:
+                    selectedFeeling?.feeling === item.feeling
+                      ? `2px solid var(--bs-${item.bg})`
+                      : "2px solid transparent",
                 }}
               >
                 {item.icon}

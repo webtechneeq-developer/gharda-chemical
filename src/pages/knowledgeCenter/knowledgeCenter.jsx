@@ -12,6 +12,7 @@ import BlogPosts from "./knowledgeCenterComponents/Blogpost";
 import VideoPosts from "./knowledgeCenterComponents/VideoPost";
 import DownloadButton from "./knowledgeCenterComponents/downloadButton";
 import { set } from "react-hook-form";
+import Feed from "../BlogEditor/components/SingleFeedPost";
 
 const KnowledgeCenter = () => {
   const params = useParams();
@@ -192,6 +193,8 @@ const KnowledgeCenter = () => {
           {activeTab === "video" && <VideoPosts />}
           {activeTab === "pdf" && <DownloadButton />}
         </div>
+
+        {/* <Feed /> */}
       </div>
     </div>
   );

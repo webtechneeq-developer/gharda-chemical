@@ -117,7 +117,7 @@ const KnowledgeCenter = () => {
 
       <Blog />
 
-      <div className="container">
+      {/* <div className="container">
         <div class="filter-tab">
           <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
             <ul class="quick-filters-tabs menu-list d-md-block">
@@ -141,7 +141,7 @@ const KnowledgeCenter = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="container">
         {/* Category Filter */}
@@ -171,7 +171,7 @@ const KnowledgeCenter = () => {
           {activeTab === "pdf" && <DownloadButton />}
         </div>
 
-        {/* <Feed /> */}
+        <Feed />
       </div>
     </div>
   );

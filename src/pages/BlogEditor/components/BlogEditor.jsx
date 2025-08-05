@@ -9,6 +9,8 @@ import VideoPost from "./VideoPost";
 import CreateEventModal from "./CreateEventPost";
 import CreateFeelingModal from "./FeelingPost";
 import DocumentPost from "./DocumentPost";
+import PollModal from "./PollPost";
+import LinkPostModal from "./LinkPost";
 
 export default function PostComposer() {
   const [showEditor, setShowEditor] = useState(false);
@@ -17,6 +19,8 @@ export default function PostComposer() {
   const [eventPost, setEventPost] = useState(false);
   const [feelingPost, setFeelingPost] = useState(false);
   const [documentPost, setDocumentPost] = useState(false);
+  const [pollPost, setPollPost] = useState(false);
+  const [linkPost, setLinkPost] = useState(false);
   const [content, setContent] = useState("");
 
   console.log("Get Raw Blog Post Data", content);
@@ -91,6 +95,24 @@ export default function PostComposer() {
             </a>
           </li>
 
+          <li
+            className="nav-item"
+            onClick={() => setPollPost(pollPost ? false : true)}
+          >
+            <a className="nav-link bg-light">
+              <span className="icon text-warning">📊</span> Poll
+            </a>
+          </li>
+
+          <li
+            className="nav-item"
+            onClick={() => setLinkPost(linkPost ? false : true)}
+          >
+            <a className="nav-link bg-light">
+              <span className="icon text-warning"> 🎮 </span> Games
+            </a>
+          </li>
+
           <div className="nav-item ms-lg-auto">
             <a className="nav-link bg-light" id="feedActionShare">
               Post
@@ -115,6 +137,12 @@ export default function PostComposer() {
 
       {/* Modal for Blog Editor */}
       {documentPost && <DocumentPost onClose={() => setDocumentPost(false)} />}
+
+      {/* Modal for Blog Editor */}
+      {pollPost && <PollModal onClose={() => setPollPost(false)} />}
+
+      {/* Modal for Blog Editor */}
+      {linkPost && <LinkPostModal onClose={() => setLinkPost(false)} />}
     </>
   );
 }

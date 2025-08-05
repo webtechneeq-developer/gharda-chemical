@@ -51,4 +51,34 @@ export const feedData = [
     attachments: [],
     createdAt: "2025-08-05T07:00:00Z",
   },
+  {
+    id: 5,
+    user: {
+      name: "Sophia Turner",
+      avatar: "https://randomuser.me/api/portraits/women/33.jpg",
+      jobTitle: "Marketing Specialist",
+    },
+    content: "Which feature should we prioritize next? Cast your vote! 📊",
+    type: "POLL",
+    poll: {
+      question: "What feature should we launch first?",
+      options: ["Dark Mode", "Offline Support", "Custom Themes"],
+    },
+    createdAt: "2025-08-05T06:15:00Z",
+  },
+  {
+    id: 6,
+    user: {
+      name: "Daniel Carter",
+      avatar: "https://randomuser.me/api/portraits/men/45.jpg",
+      jobTitle: "Game Developer",
+    },
+    content: "Hey gamers! Try my latest game 🎮",
+    type: "LINK",
+    link: {
+      title: "Play Space Quest",
+      url: "https://examplegame.com/spacequest",
+    },
+    createdAt: "2025-08-05T05:30:00Z",
+  },
 ];

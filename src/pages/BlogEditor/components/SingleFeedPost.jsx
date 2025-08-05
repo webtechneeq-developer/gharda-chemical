@@ -82,6 +82,33 @@ function FeedPost({ post }) {
         )}
       </div>
 
+      {/* --- POLL Post --- */}
+      {post.type === "POLL" && (
+        <div className="feed-poll">
+          <h6 className="feed-poll-question">{post.poll.question}</h6>
+          {post.poll.options.map((opt, i) => (
+            <div key={i} className="feed-poll-option">
+              <input type="radio" name={`poll-${post.id}`} id={`option-${i}`} />
+              <label htmlFor={`option-${i}`}>{opt}</label>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* --- LINK Post --- */}
+      {post.type === "LINK" && (
+        <div className="feed-link">
+          <a
+            href={post.link.url}
+            target="_blank"
+            rel="noreferrer"
+            className="feed-link-anchor"
+          >
+            🔗 {post.link.title}
+          </a>
+        </div>
+      )}
+
       {/* --- Actions --- */}
       <div className="feed-actions">
         <button className="feed-btn">👍 Like (56)</button>

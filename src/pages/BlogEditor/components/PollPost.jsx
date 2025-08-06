@@ -49,7 +49,7 @@ export default function PollModal({ onInsert, onClose }) {
           </span>
         </div>
         <div className="modal-body">
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
@@ -57,7 +57,7 @@ export default function PollModal({ onInsert, onClose }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </div> */}
 
           {/* Title */}
           <div className="col-12">

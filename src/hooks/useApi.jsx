@@ -23,9 +23,10 @@ export const useApi = () => {
       const headers = {
         "Content-Type": "application/json",
       };
-      if (options?.isTokenRequired !== false) {
-        headers.Authorization = `Bearer ${getToken()}`;
-      }
+
+      // if (options?.isTokenRequired !== false) {
+      //   headers.Authorization = `Bearer ${getToken()}`;
+      // }
 
       const res = await client.get(endpoint, { headers });
       setResponse(res.data);
@@ -48,9 +49,10 @@ export const useApi = () => {
           ? "multipart/form-data"
           : "application/json",
       };
-      if (options?.isTokenRequired !== false) {
-        headers.Authorization = `Bearer ${getToken()}`;
-      }
+
+      // if (options?.isTokenRequired !== false) {
+      //   headers.Authorization = `Bearer ${getToken()}`;
+      // }
 
       const res = await client.post(endpoint, dataObj, { headers });
       setResponse(res.data);

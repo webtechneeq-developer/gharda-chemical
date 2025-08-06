@@ -35,7 +35,7 @@ export default function LinkPostModal({ onInsert, onClose }) {
 
         {/* Body */}
         <div className="modal-body">
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
@@ -43,7 +43,7 @@ export default function LinkPostModal({ onInsert, onClose }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </div> */}
 
           {/* Link Title */}
           <div className="col-12">

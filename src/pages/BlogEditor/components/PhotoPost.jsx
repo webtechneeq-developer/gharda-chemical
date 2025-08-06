@@ -4,14 +4,17 @@ import "./BlogEditor.css";
 import EmojiPicker from "emoji-picker-react";
 import EmojiPickerModal from "./EmojiPicker";
 import LinkModal from "./LinkModal";
+import { useApi } from "../../../hooks/useApi";
 
-export default function PhotoPost({ onClose }) {
+export default function PhotoPost({ onClose, onInsert }) {
   const [attachments, setAttachments] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
   const [showPicker, setShowPicker] = useState(false);
   const [showLinkModal, setShowLinkModal] = useState(false);
+  const [storedHtml, setStoredHtml] = useState(""); // HTML version for rendering
+  const { postData, isLoading, response, error } = useApi();
 
   const textareaRef = useRef(null);
 
@@ -34,23 +37,60 @@ export default function PhotoPost({ onClose }) {
     }
   };
 
-  const handleLinkInsert = (link) => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const newText =
-        content.substring(0, start) + link + " " + content.substring(end);
-      setContent(newText);
-      setTimeout(() => {
-        textarea.selectionStart = textarea.selectionEnd =
-          start + link.length + 1;
-        textarea.focus();
-      }, 0);
-    } else {
-      setContent((prev) => prev + link);
-    }
+  const handleLinkInsert = (linkText, linkUrl) => {
+    // Add link as a new attachment
+    const newLink = {
+      type: "link",
+      text: linkText,
+      url: linkUrl,
+    };
+    setAttachments((prev) => [...prev, newLink]);
   };
+
+  // const handleLinkInsert = (link) => {
+  //   const textarea = textareaRef.current;
+  //   if (textarea) {
+  //     const start = textarea.selectionStart;
+  //     const end = textarea.selectionEnd;
+  //     const newText =
+  //       content.substring(0, start) + link + " " + content.substring(end);
+  //     setContent(newText);
+  //     setTimeout(() => {
+  //       textarea.selectionStart = textarea.selectionEnd =
+  //         start + link.length + 1;
+  //       textarea.focus();
+  //     }, 0);
+  //   } else {
+  //     setContent((prev) => prev + link);
+  //   }
+  // };
+
+  // const handleLinkInsert = (linkText, linkUrl) => {
+  //   const textarea = textareaRef.current;
+  //   const htmlLink = `<a href="${linkUrl}" target="_blank" rel="noreferrer">${linkText}</a>`;
+
+  //   if (textarea) {
+  //     const start = textarea.selectionStart;
+  //     const end = textarea.selectionEnd;
+
+  //     // Show display name in textarea
+  //     const newText =
+  //       content.substring(0, start) + linkText + content.substring(end);
+  //     setContent(newText);
+
+  //     // Store HTML version in hidden variable if needed
+  //     // (optional: maintain a separate variable for actual HTML)
+  //     setStoredHtml(
+  //       (prev) => prev.substring(0, start) + htmlLink + prev.substring(end)
+  //     );
+
+  //     setTimeout(() => {
+  //       textarea.selectionStart = textarea.selectionEnd =
+  //         start + linkText.length;
+  //       textarea.focus();
+  //     }, 0);
+  //   }
+  // };
 
   const placeholderAvatar =
     "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg";
@@ -87,7 +127,7 @@ export default function PhotoPost({ onClose }) {
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-header">
-          <span className="modal-title">Add post photo</span>
+          <span className="modal-title">Add Photo</span>
           <span
             type="button"
             className="btn-close"
@@ -100,7 +140,7 @@ export default function PhotoPost({ onClose }) {
         {/* <hr className="photomodal-divider" /> */}
 
         <div className="modal-body">
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
@@ -108,9 +148,9 @@ export default function PhotoPost({ onClose }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </div> */}
 
-          <div
+          {/* <div
             className="extra-btn"
             style={{
               display: "flex",
@@ -130,7 +170,7 @@ export default function PhotoPost({ onClose }) {
               }}
               onMouseOver={(e) => (e.target.style.background = "#e0e0e0")}
               onMouseOut={(e) => (e.target.style.background = "#f0f0f0")}
-              onClick={() => setShowPicker(true)}
+              onClick={() => setShowPicker(showPicker ? false : true)}
             >
               😊
             </button>
@@ -153,7 +193,7 @@ export default function PhotoPost({ onClose }) {
             >
               <FaLink />
             </button>
-          </div>
+          </div> */}
 
           <br />
 
@@ -199,8 +239,9 @@ export default function PhotoPost({ onClose }) {
 
         {/* Previews of attachments */}
         {attachments.length > 0 && (
-          <div className="attachments-preview">
+          <div className="attachments-preview  modal-body">
             {attachments.map((file, i) => {
+              const isFileObj = file instanceof File; // Distinguish file vs link
               const isImage = file.type.startsWith("image/");
               const isVideo = file.type.startsWith("video/");
               const isAudio = file.type.startsWith("audio/");
@@ -218,33 +259,48 @@ export default function PhotoPost({ onClose }) {
                   </button>
 
                   {/* Render preview */}
-                  {isImage && (
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt={file.name}
-                      className="attachment-image"
-                    />
-                  )}
-                  {isVideo && (
-                    <video controls className="attachment-video">
-                      <source
-                        src={URL.createObjectURL(file)}
-                        type={file.type}
-                      />
-                    </video>
-                  )}
-                  {isAudio && (
-                    <audio controls className="attachment-audio">
-                      <source
-                        src={URL.createObjectURL(file)}
-                        type={file.type}
-                      />
-                    </audio>
-                  )}
-                  {isDoc && (
-                    <div className="attachment-file">
-                      <FaFileAlt /> {file.name}
-                    </div>
+                  {isFileObj ? (
+                    <>
+                      {file.type.startsWith("image/") && (
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={file.name}
+                          className="attachment-image"
+                        />
+                      )}
+                      {file.type.startsWith("video/") && (
+                        <video controls className="attachment-video">
+                          <source
+                            src={URL.createObjectURL(file)}
+                            type={file.type}
+                          />
+                        </video>
+                      )}
+                      {file.type.startsWith("audio/") && (
+                        <audio controls className="attachment-audio">
+                          <source
+                            src={URL.createObjectURL(file)}
+                            type={file.type}
+                          />
+                        </audio>
+                      )}
+                      {!file.type.startsWith("image/") &&
+                        !file.type.startsWith("video/") &&
+                        !file.type.startsWith("audio/") && (
+                          <div className="attachment-file">
+                            <FaFileAlt /> {file.name}
+                          </div>
+                        )}
+                    </>
+                  ) : (
+                    file.type === "link" && (
+                      <div className="attachment-item-link">
+                        <FaLink style={{ marginRight: "5px" }} />
+                        <a href={file.url} target="_blank" rel="noreferrer">
+                          {file.text}
+                        </a>
+                      </div>
+                    )
                   )}
                 </div>
               );
@@ -259,8 +315,11 @@ export default function PhotoPost({ onClose }) {
           <button
             className="photomodal-btn post"
             disabled={attachments.length === 0}
+            onClick={() => {
+              onInsert(attachments); // Send attachments back to BlogPost
+            }}
           >
-            Post
+            Add
           </button>
         </div>
       </div>

@@ -50,9 +50,10 @@ export default function CreateFeelingModal({ onClose }) {
               {selectedFeeling.emoji} {selectedFeeling.feeling}
             </div>
           )}
+          <br />
 
           {/* User avatar + textarea */}
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               ref={textareaRef}
               value={text}
@@ -61,7 +62,7 @@ export default function CreateFeelingModal({ onClose }) {
               placeholder="Share your thoughts..."
               rows={8}
             />
-          </div>
+          </div> */}
 
           {/* Emoji Icons */}
           <div className="action-icons hstack gap-2 mb-3">

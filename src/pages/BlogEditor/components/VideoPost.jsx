@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import "./BlogEditor.css";
 
-export default function VideoPost({ onClose }) {
+export default function VideoPost({ onClose, onInsert }) {
+  const [attachments, setAttachments] = useState([]);
   const [videos, setVideos] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
@@ -12,7 +13,7 @@ export default function VideoPost({ onClose }) {
 
   // File input change
   const onFileChange = (e) => {
-    setVideos([...videos, ...Array.from(e.target.files)]);
+    setAttachments([...videos, ...Array.from(e.target.files)]);
   };
 
   // Drag events
@@ -35,7 +36,7 @@ export default function VideoPost({ onClose }) {
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-header">
-          <span className="modal-title">Add post video</span>
+          <span className="modal-title">Add Video</span>
           <span
             type="button"
             className="btn-close"
@@ -47,7 +48,7 @@ export default function VideoPost({ onClose }) {
         </div>
 
         <div className="modal-body">
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
@@ -55,7 +56,7 @@ export default function VideoPost({ onClose }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </div> */}
 
           {/* File Upload */}
           <div className="mb-3">
@@ -97,15 +98,89 @@ export default function VideoPost({ onClose }) {
           </div>
         </div>
 
+        {/* Previews of attachments */}
+        {attachments.length > 0 && (
+          <div className="attachments-preview  modal-body">
+            {attachments.map((file, i) => {
+              const isFileObj = file instanceof File; // Distinguish file vs link
+              const isImage = file.type.startsWith("image/");
+              const isVideo = file.type.startsWith("video/");
+              const isAudio = file.type.startsWith("audio/");
+              const isDoc = !isImage && !isVideo && !isAudio;
+
+              return (
+                <div key={i} className="attachment-item">
+                  {/* Delete button */}
+                  <button
+                    className="delete-btn"
+                    onClick={() => removeAttachment(i)}
+                    title="Remove attachment"
+                  >
+                    ×
+                  </button>
+
+                  {/* Render preview */}
+                  {isFileObj ? (
+                    <>
+                      {file.type.startsWith("image/") && (
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={file.name}
+                          className="attachment-image"
+                        />
+                      )}
+                      {file.type.startsWith("video/") && (
+                        <video controls className="attachment-video">
+                          <source
+                            src={URL.createObjectURL(file)}
+                            type={file.type}
+                          />
+                        </video>
+                      )}
+                      {file.type.startsWith("audio/") && (
+                        <audio controls className="attachment-audio">
+                          <source
+                            src={URL.createObjectURL(file)}
+                            type={file.type}
+                          />
+                        </audio>
+                      )}
+                      {!file.type.startsWith("image/") &&
+                        !file.type.startsWith("video/") &&
+                        !file.type.startsWith("audio/") && (
+                          <div className="attachment-file">
+                            <FaFileAlt /> {file.name}
+                          </div>
+                        )}
+                    </>
+                  ) : (
+                    file.type === "link" && (
+                      <div className="attachment-item-link">
+                        <FaLink style={{ marginRight: "5px" }} />
+                        <a href={file.url} target="_blank" rel="noreferrer">
+                          {file.text}
+                        </a>
+                      </div>
+                    )
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
         <div className="modal-footer">
           <button className="photomodal-btn cancel" onClick={onClose}>
             Cancel
           </button>
           <button
             className="photomodal-btn post"
-            disabled={videos.length === 0}
+            disabled={attachments.length === 0}
+            onClick={() => {
+              onInsert(attachments); // Send attachments back to BlogPost
+            }}
           >
-            Post
+            Add
           </button>
         </div>
       </div>

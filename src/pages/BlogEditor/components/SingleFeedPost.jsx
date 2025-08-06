@@ -52,10 +52,12 @@ function FeedPost({ post }) {
       <div className="feed-body">
         {post.content && <p className="feed-text">{post.content}</p>}
 
-        {post.type === "PHOTO" &&
-          post.attachments.map((url, i) => (
-            <img key={i} className="feed-img" src={url} alt="Post" />
-          ))}
+        <div className="feed-grid">
+          {post.type === "PHOTO" &&
+            post.attachments.map((url, i) => (
+              <img key={i} className="feed-img" src={url} alt="Post" />
+            ))}
+        </div>
 
         {post.type === "VIDEO" &&
           post.attachments.map((url, i) => (
@@ -106,6 +108,41 @@ function FeedPost({ post }) {
           >
             🔗 {post.link.title}
           </a>
+        </div>
+      )}
+
+      {/* --- EVENT Post --- */}
+      {post.type === "EVENT" && (
+        <div className="feed-event">
+          <h4 className="feed-event-title">{post.title}</h4>
+          <p className="feed-event-description">{post.description}</p>
+          <div className="feed-event-details">
+            <p>
+              <strong>📅 Date:</strong> {post.date}
+            </p>
+            <p>
+              <strong>⏰ Time:</strong> {post.time}
+            </p>
+            <p>
+              <strong>🕒 Duration:</strong> {post.duration}
+            </p>
+            <p>
+              <strong>📍 Location:</strong> {post.location}
+            </p>
+          </div>
+          <div className="feed-event-attachments">
+            {post.attachments.map((file, i) => (
+              <a
+                key={i}
+                href={file.url}
+                target="_blank"
+                rel="noreferrer"
+                className="feed-doc"
+              >
+                📄 {file.name}
+              </a>
+            ))}
+          </div>
         </div>
       )}
 

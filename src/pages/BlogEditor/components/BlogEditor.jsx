@@ -11,6 +11,8 @@ import CreateFeelingModal from "./FeelingPost";
 import DocumentPost from "./DocumentPost";
 import PollModal from "./PollPost";
 import LinkPostModal from "./LinkPost";
+import { useApi } from "../../../hooks/useApi";
+import BlogPost from "./BlogPost";
 
 export default function PostComposer() {
   const [showEditor, setShowEditor] = useState(false);
@@ -21,14 +23,33 @@ export default function PostComposer() {
   const [documentPost, setDocumentPost] = useState(false);
   const [pollPost, setPollPost] = useState(false);
   const [linkPost, setLinkPost] = useState(false);
+  const [blogPost, setBlogPost] = useState(false);
   const [content, setContent] = useState("");
+  const { postData, isLoading, response, error } = useApi();
+
+  const handleSubmit = () => {
+    console.log("Get form data before sending it to api", content);
+    postData(
+      "/blog-post/create",
+      { content },
+      {
+        onSuccess: (res) => {
+          console.log("✅ Blog Posted:", res);
+          onClose();
+        },
+        onError: (err) => {
+          console.error("❌ Error Posting Blog:", err);
+        },
+      }
+    );
+  };
 
   console.log("Get Raw Blog Post Data", content);
 
   return (
     <>
       <div className="card-body card">
-        <div className="d-flex mb-3">
+        <div className="d-flex align-items-center">
           <div className="avatar avatar-xs me-2">
             <span role="button">
               <img
@@ -43,82 +64,11 @@ export default function PostComposer() {
               className="form-control pe-4 border-0"
               rows="2"
               placeholder="Share your thoughts..."
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              style={{ cursor: "pointer" }}
+              onClick={() => setBlogPost(blogPost ? false : true)}
             ></textarea>
           </form>
         </div>
-
-        <ul className="nav nav-pills nav-stack small fw-normal">
-          <li
-            className="nav-item"
-            onClick={() => setPhotoPost(photoPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-success">📷</span> Photo
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setVideoPost(videoPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-info">🎥</span> Video
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setEventPost(eventPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-danger">📅</span> Event
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setDocumentPost(documentPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-danger">📄</span> Docs
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setFeelingPost(feelingPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-warning">😊</span> Feeling / Activity
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setPollPost(pollPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-warning">📊</span> Poll
-            </a>
-          </li>
-
-          <li
-            className="nav-item"
-            onClick={() => setLinkPost(linkPost ? false : true)}
-          >
-            <a className="nav-link bg-light">
-              <span className="icon text-warning"> 🎮 </span> Games
-            </a>
-          </li>
-
-          <div className="nav-item ms-lg-auto">
-            <a className="nav-link bg-light" id="feedActionShare">
-              Post
-            </a>
-          </div>
-        </ul>
       </div>
 
       {/* Modal for Blog Editor */}
@@ -143,6 +93,9 @@ export default function PostComposer() {
 
       {/* Modal for Blog Editor */}
       {linkPost && <LinkPostModal onClose={() => setLinkPost(false)} />}
+
+      {/* Modal for Blog Editor */}
+      {blogPost && <BlogPost onClose={() => setBlogPost(false)} />}
     </>
   );
 }

@@ -171,7 +171,7 @@ const KnowledgeCenter = () => {
           {activeTab === "pdf" && <DownloadButton />}
         </div>
 
-        {/* <Feed /> */}
+        <Feed />
       </div>
     </div>
   );

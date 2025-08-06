@@ -61,7 +61,7 @@ export default function DocumentPost({ onClose }) {
 
         {/* Modal Body */}
         <div className="modal-body">
-          <div className="photomodal-user-row">
+          {/* <div className="photomodal-user-row">
             <textarea
               className="photomodal-textarea"
               placeholder="Share your thoughts..."
@@ -69,7 +69,7 @@ export default function DocumentPost({ onClose }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </div> */}
 
           {/* File Upload */}
           <div className="mb-3">

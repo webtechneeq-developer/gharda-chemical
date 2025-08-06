@@ -1,14 +1,33 @@
 import React, { useState, useRef } from "react";
+import { FaFileAlt, FaLink } from "react-icons/fa";
 
-export default function CreateEventModal({ onClose }) {
+export default function CreateEventModal({ onClose, onInsert }) {
   const [attachments, setAttachments] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    date: "",
+    time: "",
+    duration: "",
+    location: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   // Handle file input
   const onFileChange = (e) => {
     setAttachments((prev) => [...prev, ...Array.from(e.target.files)]);
+  };
+
+  // Remove attachment
+  const removeAttachment = (index) => {
+    setAttachments((prev) => prev.filter((_, i) => i !== index));
   };
 
   // Drag events
@@ -57,6 +76,8 @@ export default function CreateEventModal({ onClose }) {
                   name="title"
                   id="title"
                   className="form-control"
+                  value={formData.title}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -68,6 +89,8 @@ export default function CreateEventModal({ onClose }) {
                   placeholder="Ex: topics, schedule, etc."
                   name="description"
                   className="form-control"
+                  value={formData.description}
+                  onChange={handleChange}
                 ></textarea>
               </div>
 
@@ -78,7 +101,8 @@ export default function CreateEventModal({ onClose }) {
                   className="form-control flatpickr-input"
                   placeholder="Select date"
                   type="text"
-                  readOnly
+                  value={formData.date}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -89,7 +113,8 @@ export default function CreateEventModal({ onClose }) {
                   className="form-control flatpickr-input"
                   placeholder="Select time"
                   type="text"
-                  readOnly
+                  value={formData.time}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -102,6 +127,8 @@ export default function CreateEventModal({ onClose }) {
                   placeholder="1hr 23m"
                   name="duration"
                   id="duration"
+                  value={formData.duration}
+                  onChange={handleChange}
                   className="form-control"
                 />
               </div>
@@ -115,6 +142,8 @@ export default function CreateEventModal({ onClose }) {
                   placeholder="Logansport, IN 46947"
                   name="location"
                   id="location"
+                  value={formData.location}
+                  onChange={handleChange}
                   className="form-control"
                 />
               </div>
@@ -160,6 +189,54 @@ export default function CreateEventModal({ onClose }) {
             </div>
           </div>
 
+          {/* Previews of attachments */}
+          {attachments.length > 0 && (
+            <div className="attachments-preview  modal-body">
+              {attachments.map((file, i) => {
+                const isFileObj = file instanceof File; // Distinguish file vs link
+                const isImage = file.type.startsWith("image/");
+                const isVideo = file.type.startsWith("video/");
+                const isAudio = file.type.startsWith("audio/");
+                const isDoc = !isImage && !isVideo && !isAudio;
+
+                return (
+                  <div key={i} className="attachment-item">
+                    {/* Delete button */}
+                    <button
+                      className="delete-btn"
+                      onClick={() => removeAttachment(i)}
+                      title="Remove attachment"
+                    >
+                      ×
+                    </button>
+
+                    {/* Render preview */}
+                    {isFileObj ? (
+                      <>
+                        {!file.type.startsWith("image/") &&
+                          !file.type.startsWith("video/") &&
+                          !file.type.startsWith("audio/") && (
+                            <div className="attachment-file">
+                              <FaFileAlt /> {file.name}
+                            </div>
+                          )}
+                      </>
+                    ) : (
+                      file.type === "link" && (
+                        <div className="attachment-item-link">
+                          <FaLink style={{ marginRight: "5px" }} />
+                          <a href={file.url} target="_blank" rel="noreferrer">
+                            {file.text}
+                          </a>
+                        </div>
+                      )
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
           {/* Modal Footer */}
           <div className="modal-footer">
             <button
@@ -169,7 +246,14 @@ export default function CreateEventModal({ onClose }) {
             >
               Cancel
             </button>
-            <button type="submit" className="btn btn-success-soft">
+            <button
+              type="submit"
+              className="btn btn-success-soft"
+              onClick={() => {
+                onInsert({ ...formData, attachments });
+                // Send attachments back to BlogPost
+              }}
+            >
               Create now
             </button>
           </div>

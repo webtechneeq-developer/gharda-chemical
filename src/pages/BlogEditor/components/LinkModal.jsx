@@ -5,10 +5,18 @@ export default function LinkModal({ onInsert, onClose }) {
   const [linkText, setLinkText] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
 
+  // const handleInsert = () => {
+  //   if (!linkText || !linkUrl) return;
+  //   const formattedLink = `[${linkText}](${linkUrl})`;
+  //   onInsert(formattedLink);
+  //   onClose();
+  // };
+
   const handleInsert = () => {
     if (!linkText || !linkUrl) return;
-    const formattedLink = `[${linkText}](${linkUrl})`;
-    onInsert(formattedLink);
+    // const formattedLink = `<a href="${linkUrl}" target="_blank" rel="noreferrer">${linkText}</a>`;
+    onInsert(linkText, linkUrl);
+    // onInsert(formattedLink);
     onClose();
   };
 
@@ -47,7 +55,9 @@ export default function LinkModal({ onInsert, onClose }) {
           <button className="photomodal-btn cancel" onClick={onClose}>
             Cancel
           </button>
-          <button className="photomodal-btn post">Save</button>
+          <button className="photomodal-btn post" onClick={handleInsert}>
+            Save
+          </button>
         </div>
       </div>
     </div>

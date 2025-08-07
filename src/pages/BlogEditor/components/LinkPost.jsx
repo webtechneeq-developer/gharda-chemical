@@ -79,12 +79,26 @@ export default function LinkPostModal({ onInsert, onClose }) {
 
         {/* Footer */}
         <div className="modal-footer">
-          <button className="photomodal-btn cancel" onClick={onClose}>
-            Cancel
-          </button>
-          <button className="photomodal-btn post" onClick={handleSave}>
-            Post Link
-          </button>
+          <div className="footer-buttons">
+            <button
+              type="button"
+              className="btn btn-danger-soft me-2"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-success-soft"
+              disabled={linkUrl.length === 0}
+              // onClick={() => {
+              //   onInsert({ attachments });
+              //   // Send attachments back to BlogPost
+              // }}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -109,10 +109,26 @@ export default function PollModal({ onInsert, onClose }) {
         </div>
 
         <div className="modal-footer">
-          <button className="photomodal-btn cancel" onClick={onClose}>
-            Cancel
-          </button>
-          <button className="photomodal-btn post">Post</button>
+          <div className="footer-buttons">
+            <button
+              type="button"
+              className="btn btn-danger-soft me-2"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-success-soft"
+              disabled={options.length === 0}
+              // onClick={() => {
+              //   onInsert({ attachments });
+              //   // Send attachments back to BlogPost
+              // }}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
     </div>

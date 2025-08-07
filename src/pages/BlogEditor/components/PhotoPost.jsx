@@ -15,6 +15,7 @@ export default function PhotoPost({ onClose, onInsert }) {
   const [showLinkModal, setShowLinkModal] = useState(false);
   const [storedHtml, setStoredHtml] = useState(""); // HTML version for rendering
   const { postData, isLoading, response, error } = useApi();
+  const [postType, setPostType] = useState("PHOTO");
 
   const textareaRef = useRef(null);
 
@@ -97,7 +98,15 @@ export default function PhotoPost({ onClose, onInsert }) {
 
   // Handle file input
   const onFileChange = (e) => {
-    setAttachments((prev) => [...prev, ...Array.from(e.target.files)]);
+    const selectedFiles = Array.from(e.target.files);
+    const newTotal = attachments.length + selectedFiles.length;
+
+    if (newTotal > 5) {
+      alert("You can upload a maximum of 5 images.");
+      return;
+    }
+
+    setAttachments((prev) => [...prev, ...selectedFiles]);
   };
 
   // Drag events
@@ -239,7 +248,7 @@ export default function PhotoPost({ onClose, onInsert }) {
 
         {/* Previews of attachments */}
         {attachments.length > 0 && (
-          <div className="attachments-preview  modal-body">
+          <div className="attachments-preview">
             {attachments.map((file, i) => {
               const isFileObj = file instanceof File; // Distinguish file vs link
               const isImage = file.type.startsWith("image/");
@@ -309,18 +318,25 @@ export default function PhotoPost({ onClose, onInsert }) {
         )}
 
         <div className="modal-footer">
-          <button className="photomodal-btn cancel" onClick={onClose}>
-            Cancel
-          </button>
-          <button
-            className="photomodal-btn post"
-            disabled={attachments.length === 0}
-            onClick={() => {
-              onInsert(attachments); // Send attachments back to BlogPost
-            }}
-          >
-            Add
-          </button>
+          <div className="footer-buttons">
+            <button
+              type="button"
+              className="btn btn-danger-soft me-2"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-success-soft"
+              disabled={attachments.length === 0}
+              onClick={() => {
+                onInsert(attachments, postType); // Send attachments back to BlogPost
+              }}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
       {showPicker && <EmojiPickerModal onSelect={onEmojiClick} />}

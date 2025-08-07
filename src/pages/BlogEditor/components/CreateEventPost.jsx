@@ -6,6 +6,7 @@ export default function CreateEventModal({ onClose, onInsert }) {
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
+  const [postType, setPostType] = useState("EVENT");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -239,23 +240,26 @@ export default function CreateEventModal({ onClose, onInsert }) {
 
           {/* Modal Footer */}
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-danger-soft me-2"
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="btn btn-success-soft"
-              onClick={() => {
-                onInsert({ ...formData, attachments });
-                // Send attachments back to BlogPost
-              }}
-            >
-              Create now
-            </button>
+            <div className="footer-buttons">
+              <button
+                type="button"
+                className="btn btn-danger-soft me-2"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="btn btn-success-soft"
+                disabled={attachments.length === 0}
+                onClick={() => {
+                  onInsert({ ...formData, attachments, postType });
+                  // Send attachments back to BlogPost
+                }}
+              >
+                Post
+              </button>
+            </div>
           </div>
         </form>
       </div>

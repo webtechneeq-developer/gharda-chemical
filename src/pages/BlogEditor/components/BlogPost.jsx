@@ -31,6 +31,7 @@ export default function BlogPost({ onClose, onInsert }) {
   const [blogPost, setBlogPost] = useState(false);
   const [content, setContent] = useState("");
   const { postData, isLoading, response, error } = useApi();
+  const [postType, setPostType] = useState("");
 
   const textareaRef = useRef(null);
 
@@ -154,7 +155,7 @@ export default function BlogPost({ onClose, onInsert }) {
     setAttachments((prev) => prev.filter((_, i) => i !== index));
   };
 
-  console.log("Get PhotoPost Data", content, attachments);
+  console.log("Get PhotoPost Data", content, attachments, postType);
 
   return (
     <>
@@ -178,7 +179,7 @@ export default function BlogPost({ onClose, onInsert }) {
               <textarea
                 className="photomodal-textarea"
                 placeholder="Share your thoughts..."
-                rows={4}
+                rows={18}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
@@ -228,7 +229,6 @@ export default function BlogPost({ onClose, onInsert }) {
                 <FaLink />
               </button>
             </div>
-            <hr />
 
             {attachments.length === 0 && (
               <ul className="nav nav-pills nav-stack small fw-normal">
@@ -300,61 +300,56 @@ export default function BlogPost({ onClose, onInsert }) {
           </div>
 
           {/* Previews of content */}
-          {/* Previews of content */}
-          {eventData.length > 0 &&
-            eventData.map((post, index) => (
-              <div key={index} className="feed-event  modal-body">
-                <h4 className="feed-event-title">{post.title}</h4>
-                <p className="feed-event-description">{post.description}</p>
 
-                <div className="feed-event-details">
-                  <p>
-                    <strong>📅 Date:</strong> {post.date}
-                  </p>
-                  <p>
-                    <strong>⏰ Time:</strong> {post.time}
-                  </p>
-                  <p>
-                    <strong>🕒 Duration:</strong> {post.duration}
-                  </p>
-                  <p>
-                    <strong>📍 Location:</strong> {post.location}
-                  </p>
-                </div>
+          {eventData?.attachments?.length > 0 && postType === "EVENT" && (
+            <div className="feed-event-preview">
+              <h4 className="feed-event-title">{eventData.title}</h4>
+              <p className="feed-event-description">{eventData.description}</p>
 
-                <div className="feed-event-attachments">
-                  {post.attachments && post.attachments.length > 0 ? (
-                    post.attachments.map((file, i) => (
-                      <a
-                        key={i}
-                        href={URL.createObjectURL(file)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="feed-doc"
-                      >
-                        📄 {file.name}
-                      </a>
-                    ))
-                  ) : (
-                    <p>No attachments</p>
-                  )}
-                </div>
+              <div className="feed-event-details">
+                <p>
+                  <strong>📅 Date:</strong> {eventData.date}
+                </p>
+                <p>
+                  <strong>⏰ Time:</strong> {eventData.time}
+                </p>
+                <p>
+                  <strong>🕒 Duration:</strong> {eventData.duration}
+                </p>
+                <p>
+                  <strong>📍 Location:</strong> {eventData.location}
+                </p>
               </div>
-            ))}
 
-          {/* Previews of attachments */}
-          {attachments.length > 0 && (
-            <div className="attachments-preview  modal-body">
-              {attachments.map((file, i) => {
-                const isFileObj = file instanceof File; // Distinguish file vs link
-                const isImage = file.type.startsWith("image/");
-                const isVideo = file.type.startsWith("video/");
-                const isAudio = file.type.startsWith("audio/");
-                const isDoc = !isImage && !isVideo && !isAudio;
+              <div className="feed-event-attachments">
+                {eventData.attachments && eventData.attachments.length > 0 ? (
+                  eventData.attachments.map((file, i) => (
+                    <a
+                      key={i}
+                      href={URL.createObjectURL(file)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="feed-doc"
+                    >
+                      📄 {file.name}
+                    </a>
+                  ))
+                ) : (
+                  <p>No attachments</p>
+                )}
+              </div>
+            </div>
+          )}
 
-                return (
+          {postType === "PHOTO" && attachments.length > 0 && (
+            <div className="attachments-preview">
+              {attachments
+                .filter(
+                  (file) =>
+                    file instanceof File && file.type.startsWith("image/")
+                )
+                .map((file, i) => (
                   <div key={i} className="attachment-item">
-                    {/* Delete button */}
                     <button
                       className="delete-btn"
                       onClick={() => removeAttachment(i)}
@@ -362,78 +357,93 @@ export default function BlogPost({ onClose, onInsert }) {
                     >
                       ×
                     </button>
-
-                    {/* Render preview */}
-                    {isFileObj ? (
-                      <>
-                        {file.type.startsWith("image/") && (
-                          <img
-                            src={URL.createObjectURL(file)}
-                            alt={file.name}
-                            className="attachment-image"
-                          />
-                        )}
-                        {file.type.startsWith("video/") && (
-                          <video controls className="attachment-video">
-                            <source
-                              src={URL.createObjectURL(file)}
-                              type={file.type}
-                            />
-                          </video>
-                        )}
-                        {file.type.startsWith("audio/") && (
-                          <audio controls className="attachment-audio">
-                            <source
-                              src={URL.createObjectURL(file)}
-                              type={file.type}
-                            />
-                          </audio>
-                        )}
-                        {!file.type.startsWith("image/") &&
-                          !file.type.startsWith("video/") &&
-                          !file.type.startsWith("audio/") && (
-                            // <div className="attachment-file">
-                            //   <FaFileAlt /> {file.name}
-                            // </div>
-                            <div className="feed-event-attachments">
-                              <a
-                                href={URL.createObjectURL(file)}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="feed-doc"
-                              >
-                                📄 {file.name}
-                              </a>
-                            </div>
-                          )}
-                      </>
-                    ) : (
-                      file.type === "link" && (
-                        <div className="attachment-item-link">
-                          <FaLink style={{ marginRight: "5px" }} />
-                          <a href={file.url} target="_blank" rel="noreferrer">
-                            {file.text}
-                          </a>
-                        </div>
-                      )
-                    )}
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={file.name}
+                      className="attachment-image"
+                    />
                   </div>
-                );
-              })}
+                ))}
             </div>
           )}
 
+          {postType === "VIDEO" && attachments.length > 0 && (
+            <div className="attachments-preview">
+              {attachments
+                .filter(
+                  (file) =>
+                    file instanceof File && file.type.startsWith("video/")
+                )
+                .map((file, i) => (
+                  <div key={i} className="attachment-item">
+                    <button
+                      className="delete-btn"
+                      onClick={() => removeAttachment(i)}
+                      title="Remove attachment"
+                    >
+                      ×
+                    </button>
+                    <video
+                      controls
+                      className="attachment-video"
+                      src={URL.createObjectURL(file)}
+                    />
+                  </div>
+                ))}
+            </div>
+          )}
+
+          {postType === "DOC" && attachments.length > 0 && (
+            <div className="attachments-preview">
+              {attachments
+                .filter(
+                  (file) =>
+                    file instanceof File &&
+                    !file.type.startsWith("image/") &&
+                    !file.type.startsWith("video/")
+                )
+                .map((file, i) => (
+                  <div key={i} className="attachment-item">
+                    <button
+                      className="delete-btn"
+                      onClick={() => removeAttachment(i)}
+                      title="Remove attachment"
+                    >
+                      ×
+                    </button>
+                    <a
+                      href={URL.createObjectURL(file)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="attachment-doc"
+                    >
+                      📄 {file.name}
+                    </a>
+                  </div>
+                ))}
+            </div>
+          )}
+
+          {/* Previews of attachments */}
+
           <div className="modal-footer">
-            <button className="photomodal-btn cancel" onClick={onClose}>
-              Cancel
-            </button>
-            <button
-              className="photomodal-btn post"
-              disabled={attachments.length === 0}
-              onClick={handleSubmit}
-            >
-              Post
-            </button>
+            <div className="footer-buttons">
+              <button
+                type="button"
+                className="btn btn-danger-soft me-2"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="btn btn-success-soft"
+                disabled={attachments.length === 0}
+                onClick={handleSubmit}
+              >
+                Post
+              </button>
+            </div>
           </div>
         </div>
         {showPicker && <EmojiPickerModal onSelect={onEmojiClick} />}
@@ -452,8 +462,9 @@ export default function BlogPost({ onClose, onInsert }) {
       {photoPost && (
         <PhotoPost
           onClose={() => setPhotoPost(false)}
-          onInsert={(files) => {
+          onInsert={(files, type) => {
             setAttachments((prev) => [...prev, ...files]); // Add to BlogPost attachments
+            setPostType(type); // ✅ Capture post type
             setPhotoPost(false); // Close modal after adding
           }}
         />
@@ -465,8 +476,9 @@ export default function BlogPost({ onClose, onInsert }) {
       {videoPost && (
         <VideoPost
           onClose={() => setVideoPost(false)}
-          onInsert={(files) => {
+          onInsert={(files, type) => {
             setAttachments((prev) => [...prev, ...files]); // Add to BlogPost attachments
+            setPostType(type); // ✅ Capture post type
             setVideoPost(false); // Close modal after adding
           }}
         />
@@ -480,6 +492,7 @@ export default function BlogPost({ onClose, onInsert }) {
           onClose={() => setEventPost(false)}
           onInsert={(data) => {
             setEventData((prev) => [...prev, data]); // Just add the new event object
+            setPostType(data.postType); // ✅ Capture post type
             if (data.attachments) {
               setAttachments((prev) => [...prev, ...data.attachments]);
             }

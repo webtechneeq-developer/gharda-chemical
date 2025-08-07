@@ -251,8 +251,8 @@ margin-left: 3px;
 
 .modal-content {
   background: white;
-  width: 600px;
-  max-height: 90vh;
+  width: 900px;
+  height: 90vh;
   border-radius: 8px;
   overflow-y: auto;
   display: flex;
@@ -365,10 +365,14 @@ margin-left: 3px;
 }
 
 .attachments-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px 0;
+  left: 20px;
+    display: flex
+;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+    position: absolute;
+    top: 41rem;
 }
 
 .attachment-item {
@@ -690,6 +694,8 @@ margin-left: 3px;
 /* Modal Content */
 .modal-content {
   border-radius: 10px;
+  margin-left: 10px;
+  margin-left: 10px;
   border: none;
   background: #fff;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
@@ -787,8 +793,11 @@ margin-left: 3px;
 /* Footer */
 .modal-footer {
   background: #f8f9fa;
-  padding: 1rem 1.5rem;
-  border-top: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #dee2e6;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .btn {

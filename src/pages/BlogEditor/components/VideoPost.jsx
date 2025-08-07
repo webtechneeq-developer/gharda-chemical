@@ -7,13 +7,22 @@ export default function VideoPost({ onClose, onInsert }) {
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
   const [content, setContent] = useState("");
+  const [postType, setPostType] = useState("VIDEO");
 
   const placeholderAvatar =
     "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg";
 
   // File input change
   const onFileChange = (e) => {
-    setAttachments([...videos, ...Array.from(e.target.files)]);
+    const selectedFiles = Array.from(e.target.files);
+    const newTotal = attachments.length + selectedFiles.length;
+
+    if (newTotal > 1) {
+      alert("You can upload a maximum of 1 Video.");
+      return;
+    }
+
+    setAttachments((prev) => [...prev, ...selectedFiles]);
   };
 
   // Drag events
@@ -100,7 +109,7 @@ export default function VideoPost({ onClose, onInsert }) {
 
         {/* Previews of attachments */}
         {attachments.length > 0 && (
-          <div className="attachments-preview  modal-body">
+          <div className="attachments-preview">
             {attachments.map((file, i) => {
               const isFileObj = file instanceof File; // Distinguish file vs link
               const isImage = file.type.startsWith("image/");
@@ -170,18 +179,25 @@ export default function VideoPost({ onClose, onInsert }) {
         )}
 
         <div className="modal-footer">
-          <button className="photomodal-btn cancel" onClick={onClose}>
-            Cancel
-          </button>
-          <button
-            className="photomodal-btn post"
-            disabled={attachments.length === 0}
-            onClick={() => {
-              onInsert(attachments); // Send attachments back to BlogPost
-            }}
-          >
-            Add
-          </button>
+          <div className="footer-buttons">
+            <button
+              type="button"
+              className="btn btn-danger-soft me-2"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="btn btn-success-soft"
+              disabled={attachments.length === 0}
+              onClick={() => {
+                onInsert(attachments, postType); // Send attachments back to BlogPost
+              }}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
     </div>

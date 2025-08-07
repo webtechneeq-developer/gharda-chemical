@@ -179,7 +179,7 @@ export default function BlogPost({ onClose, onInsert }) {
               <textarea
                 className="photomodal-textarea"
                 placeholder="Share your thoughts..."
-                rows={18}
+                rows={12}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />

@@ -165,11 +165,11 @@ const KnowledgeCenter = () => {
         ))} */}
 
         {/* Conditionally Render Content */}
-        <div className="content">
+        {/* <div className="content">
           {activeTab === "post" && <BlogPosts />}
           {activeTab === "video" && <VideoPosts />}
           {activeTab === "pdf" && <DownloadButton />}
-        </div>
+        </div> */}
 
         <Feed />
       </div>

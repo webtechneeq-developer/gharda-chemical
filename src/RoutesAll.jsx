@@ -22,6 +22,7 @@ import BlogEditor from "./pages/BlogEditor/components/BlogEditor";
 import Blog from "./pages/BlogEditor/Blog";
 import GhardaUnplugged from "./pages/GhardaUnplugged/GhardaUnplugged";
 import CompanyAnnouncement from "./pages/CompanyAnnouncement/CompanyAnnouncement";
+import GhardaCares from "./pages/GhardaCares/GhardaCares";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -47,6 +48,10 @@ const RoutesAll = () => {
         {
           path: "gharda-unplugged",
           element: <GhardaUnplugged />,
+        },
+        {
+          path: "gharda-cares",
+          element: <GhardaCares />,
         },
         {
           path: "company-announcement",

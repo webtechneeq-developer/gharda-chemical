@@ -38,7 +38,7 @@ const items = [
     title: "Gharda cares ",
     icon: "/images/care.png",
     bgColor: "#ffe5e5",
-    link: "#",
+    link: "/gharda-cares",
   },
   {
     title: "Knowledge Centre",

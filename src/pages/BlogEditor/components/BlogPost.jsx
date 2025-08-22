@@ -155,7 +155,9 @@ export default function BlogPost({ onClose, onInsert }) {
     setAttachments((prev) => prev.filter((_, i) => i !== index));
   };
 
-  console.log("Get PhotoPost Data", content, attachments, postType);
+  console.log("Get PhotoPost Data", content, attachments, postType, eventData);
+
+  console.log("Get Event  Data", eventData);
 
   return (
     <>
@@ -175,7 +177,29 @@ export default function BlogPost({ onClose, onInsert }) {
           {/* <hr className="photomodal-divider" /> */}
 
           <div className="modal-body">
-            <div className="photomodal-user-row">
+            {attachments.length === 0 ? (
+              <div className="photomodal-user-row">
+                <textarea
+                  className="photomodal-textarea"
+                  placeholder="Share your thoughts..."
+                  rows={12}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                />
+              </div>
+            ) : (
+              <div className="photomodal-user-row">
+                <textarea
+                  className="photomodal-textarea"
+                  placeholder="Share your thoughts..."
+                  rows={6}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                />
+              </div>
+            )}
+
+            {/* <div className="photomodal-user-row">
               <textarea
                 className="photomodal-textarea"
                 placeholder="Share your thoughts..."
@@ -183,7 +207,7 @@ export default function BlogPost({ onClose, onInsert }) {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
-            </div>
+            </div> */}
 
             <div
               className="extra-btn"
@@ -301,45 +325,47 @@ export default function BlogPost({ onClose, onInsert }) {
 
           {/* Previews of content */}
 
-          {eventData?.attachments?.length > 0 && postType === "EVENT" && (
-            <div className="feed-event-preview">
-              <h4 className="feed-event-title">{eventData.title}</h4>
-              <p className="feed-event-description">{eventData.description}</p>
+          {eventData?.length > 0 &&
+            postType === "EVENT" &&
+            eventData.map((event, index) => (
+              <div key={index} className="feed-event-preview">
+                <h4 className="feed-event-title">{event.title}</h4>
+                <p className="feed-event-description">{event.description}</p>
 
-              <div className="feed-event-details">
-                <p>
-                  <strong>📅 Date:</strong> {eventData.date}
-                </p>
-                <p>
-                  <strong>⏰ Time:</strong> {eventData.time}
-                </p>
-                <p>
-                  <strong>🕒 Duration:</strong> {eventData.duration}
-                </p>
-                <p>
-                  <strong>📍 Location:</strong> {eventData.location}
-                </p>
-              </div>
+                <div className="feed-event-details">
+                  <p>
+                    <strong>📅 Date:</strong> {event.date || "N/A"}
+                  </p>
+                  <p>
+                    <strong>⏰ Time:</strong> {event.time || "N/A"}
+                  </p>
+                  <p>
+                    <strong>🕒 Duration:</strong> {event.duration || "N/A"}
+                  </p>
+                  <p>
+                    <strong>📍 Location:</strong> {event.location || "N/A"}
+                  </p>
+                </div>
 
-              <div className="feed-event-attachments">
-                {eventData.attachments && eventData.attachments.length > 0 ? (
-                  eventData.attachments.map((file, i) => (
-                    <a
-                      key={i}
-                      href={URL.createObjectURL(file)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="feed-doc"
-                    >
-                      📄 {file.name}
-                    </a>
-                  ))
-                ) : (
-                  <p>No attachments</p>
-                )}
+                <div className="feed-event-attachments">
+                  {event.attachments && event.attachments.length > 0 ? (
+                    event.attachments.map((file, i) => (
+                      <a
+                        key={i}
+                        href={URL.createObjectURL(file)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="feed-doc"
+                      >
+                        📄 {file.name}
+                      </a>
+                    ))
+                  ) : (
+                    <p>No attachments</p>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            ))}
 
           {postType === "PHOTO" && attachments.length > 0 && (
             <div className="attachments-preview">

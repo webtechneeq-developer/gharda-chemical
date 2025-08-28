@@ -10,7 +10,7 @@ function HeroBanner() {
 
   return (
     <div className="container">
-      <div className="newsfeed-banner">
+{/*       <div className="newsfeed-banner">
         <div className="media">
           <div className="item-icon">
             <img
@@ -26,7 +26,10 @@ function HeroBanner() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
+        <h1 className="text-xl font-bold text-center mt-5 mb-3">
+        Company Announcement
+       </h1>
 
       <div className="">
         <div class="filter-tab">

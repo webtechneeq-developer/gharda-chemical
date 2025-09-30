@@ -76,7 +76,7 @@ export default function PostComposer({ categories = [] }) {
               <button
                 key={category}
                 type="button"
-                className={`btn btn-sm ${
+                className={`btn btn1 btn-sm ${
                   activeCategory === category
                     ? "btn-dark"
                     : "btn-outline-secondary"

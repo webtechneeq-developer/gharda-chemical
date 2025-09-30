@@ -22,3 +22,10 @@ ul {
 .main-container {
   background: url(/public/images/bg.webp) !important;
 }
+.btn1:hover {
+  background: linear-gradient(94.6deg, #12a0e3 -2.74%, #034ea2 112.99%);
+}
+.btn-dark {
+  background: linear-gradient(94.6deg, #12a0e3 -2.74%, #034ea2 112.99%);
+  border: none !important;
+}

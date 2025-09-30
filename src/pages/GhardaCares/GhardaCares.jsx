@@ -109,10 +109,8 @@ const GhardaCares = () => {
 
   return (
     <>
-      {/* <HeroBanner /> */}
-      <HeroBanner />
-
-      <div className="container">
+      <div className="main-container">
+        <HeroBanner />
         {/* Posts */}
         {showSelectedPost.map((data) => (
           <Card key={data.id} className="post-card mb-sm-5 mb-4 border-0">

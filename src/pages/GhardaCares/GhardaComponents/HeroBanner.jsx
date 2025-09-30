@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import BlogEditor from "../../BlogEditor/components/BlogEditor";
 import "../../knowledgeCenter/knowledgeCenterComponents/knowledgeCenterComponent.css";
 import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG icon
 
@@ -7,10 +8,23 @@ import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG 
 
 function HeroBanner() {
   const [activeTab, setActiveTab] = useState("hobbies"); // "text" | "pdf"
+  const [activeCategory, setActiveCategory] = useState("General");
+
+  // 2. Array of category names
+  const categories = [
+    "General",
+    "Awards & Certification",
+    "HR Updates",
+    "Products",
+    "Informal Announcements related to lifestyle",
+    "GARC Updates",
+    "New school ",
+    "Admissions etc",
+  ];
 
   return (
     <div className="container">
-{/*       <div className="newsfeed-banner">
+      {/*       <div className="newsfeed-banner">
         <div className="media">
           <div className="item-icon">
             <img
@@ -27,11 +41,10 @@ function HeroBanner() {
           </div>
         </div>
       </div> */}
-        <h1 className="text-xl font-bold text-center mt-5 mb-3">
-        Gharda Cares
-        </h1>
+      <h1 className="text-xl font-bold text-center mt-5 mb-3">Gharda Cares</h1>
 
-      <div className="">
+      <BlogEditor categories={categories} />
+      {/* <div className="">
         <div class="filter-tab">
           <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
             <ul class="quick-filters-tabs menu-list d-md-block">
@@ -98,7 +111,7 @@ function HeroBanner() {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <div class="activity-item type-activity_update" id="activity-694">
         <div class="block-box post-view">

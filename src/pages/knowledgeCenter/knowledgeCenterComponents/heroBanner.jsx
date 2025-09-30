@@ -7,7 +7,7 @@ import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG 
 function HeroBanner() {
   return (
     <div className="container">
-{/*       <div className="newsfeed-banner">
+      {/*       <div className="newsfeed-banner">
         <div className="media">
           <div className="item-icon">
             <img
@@ -24,9 +24,9 @@ function HeroBanner() {
           </div>
         </div>
       </div> */}
-        <h1 className="text-xl font-bold text-center mt-5 mb-3">
-        Employees Newsfeed<
-        </h1>
+      <h1 className="text-xl font-bold text-center mt-5 mb-3">
+        Employees Newsfeed
+      </h1>
 
       <div className="row">
         <div class="col-xl-8 order-xl-1">

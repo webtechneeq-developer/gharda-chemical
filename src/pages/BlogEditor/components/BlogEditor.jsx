@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import { FaVideo, FaImage, FaRegNewspaper } from "react-icons/fa";
-import BlogEditor from "./BlogEditor";
-import "./BlogEditor.css";
-import CreatePost from "./CreatePost";
-import { FaTimes, FaSmile, FaCalendarAlt, FaCog, FaPlus } from "react-icons/fa";
+import BlogPost from "./BlogPost";
 import PhotoPost from "./PhotoPost";
 import VideoPost from "./VideoPost";
 import CreateEventModal from "./CreateEventPost";
@@ -12,9 +8,8 @@ import DocumentPost from "./DocumentPost";
 import PollModal from "./PollPost";
 import LinkPostModal from "./LinkPost";
 import { useApi } from "../../../hooks/useApi";
-import BlogPost from "./BlogPost";
 
-export default function PostComposer() {
+export default function PostComposer({ categories = [] }) {
   const [showEditor, setShowEditor] = useState(false);
   const [photoPost, setPhotoPost] = useState(false);
   const [videoPost, setVideoPost] = useState(false);
@@ -25,13 +20,19 @@ export default function PostComposer() {
   const [linkPost, setLinkPost] = useState(false);
   const [blogPost, setBlogPost] = useState(false);
   const [content, setContent] = useState("");
+
   const { postData, isLoading, response, error } = useApi();
+
+  // Active category with safe default
+  const [activeCategory, setActiveCategory] = useState(
+    categories.length > 0 ? categories[0] : "General"
+  );
 
   const handleSubmit = () => {
     console.log("Get form data before sending it to api", content);
     postData(
       "/blog-post/create",
-      { content },
+      { content, category: activeCategory }, // include category
       {
         onSuccess: (res) => {
           console.log("✅ Blog Posted:", res);
@@ -44,13 +45,11 @@ export default function PostComposer() {
     );
   };
 
-  console.log("Get Raw Blog Post Data", content);
-
   return (
     <>
       <div className="card-body card">
         <div className="d-flex align-items-center">
-          <div className="avatar avatar-xs me-2">
+          <form className="w-100 d-flex">
             <span role="button">
               <img
                 className="avatar-img rounded-circle"
@@ -58,43 +57,51 @@ export default function PostComposer() {
                 alt="avatar3"
               />
             </span>
-          </div>
-          <form className="w-100">
             <textarea
               className="form-control pe-4 border-0"
               rows="2"
               placeholder="Share your thoughts..."
               style={{ cursor: "pointer" }}
-              onClick={() => setBlogPost(blogPost ? false : true)}
+              onClick={() => setBlogPost(!blogPost)}
             ></textarea>
           </form>
         </div>
       </div>
 
-      {/* Modal for Blog Editor */}
+      {/* Category Selector */}
+      <div className="card-body py-2 px-3 my-2">
+        <div className="d-flex justify-content-center flex-wrap gap-2">
+          {categories && categories.length > 0 ? (
+            categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={`btn btn-sm ${
+                  activeCategory === category
+                    ? "btn-dark"
+                    : "btn-outline-secondary"
+                }`}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+            ))
+          ) : (
+            <p>No categories available</p>
+          )}
+        </div>
+      </div>
+
+      {/* Modals */}
       {photoPost && <PhotoPost onClose={() => setPhotoPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {videoPost && <VideoPost onClose={() => setVideoPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {eventPost && <CreateEventModal onClose={() => setEventPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {feelingPost && (
         <CreateFeelingModal onClose={() => setFeelingPost(false)} />
       )}
-
-      {/* Modal for Blog Editor */}
       {documentPost && <DocumentPost onClose={() => setDocumentPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {pollPost && <PollModal onClose={() => setPollPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {linkPost && <LinkPostModal onClose={() => setLinkPost(false)} />}
-
-      {/* Modal for Blog Editor */}
       {blogPost && <BlogPost onClose={() => setBlogPost(false)} />}
     </>
   );

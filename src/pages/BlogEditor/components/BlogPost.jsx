@@ -1,5 +1,11 @@
 import React, { useState, useRef } from "react";
-import { FaFileAlt, FaLink } from "react-icons/fa";
+import { FaFileAlt, FaLink, FaPaperPlane, FaSmile } from "react-icons/fa";
+import {
+  BsImage,
+  BsCameraVideo,
+  BsCalendarEvent,
+  BsFileEarmarkText,
+} from "react-icons/bs";
 import "./BlogEditor.css";
 import EmojiPicker from "emoji-picker-react";
 import EmojiPickerModal from "./EmojiPicker";
@@ -32,6 +38,9 @@ export default function BlogPost({ onClose, onInsert }) {
   const [content, setContent] = useState("");
   const { postData, isLoading, response, error } = useApi();
   const [postType, setPostType] = useState("");
+
+  // FIX: Add this line to create the 'category' state
+  const [category, setCategory] = useState("");
 
   const textareaRef = useRef(null);
 
@@ -72,7 +81,6 @@ export default function BlogPost({ onClose, onInsert }) {
   };
 
   const handleLinkInsert = (linkText, linkUrl) => {
-    // Add link as a new attachment
     const newLink = {
       type: "link",
       text: linkText,
@@ -81,60 +89,20 @@ export default function BlogPost({ onClose, onInsert }) {
     setAttachments((prev) => [...prev, newLink]);
   };
 
-  // const handleLinkInsert = (link) => {
-  //   const textarea = textareaRef.current;
-  //   if (textarea) {
-  //     const start = textarea.selectionStart;
-  //     const end = textarea.selectionEnd;
-  //     const newText =
-  //       content.substring(0, start) + link + " " + content.substring(end);
-  //     setContent(newText);
-  //     setTimeout(() => {
-  //       textarea.selectionStart = textarea.selectionEnd =
-  //         start + link.length + 1;
-  //       textarea.focus();
-  //     }, 0);
-  //   } else {
-  //     setContent((prev) => prev + link);
-  //   }
-  // };
-
-  // const handleLinkInsert = (linkText, linkUrl) => {
-  //   const textarea = textareaRef.current;
-  //   const htmlLink = `<a href="${linkUrl}" target="_blank" rel="noreferrer">${linkText}</a>`;
-
-  //   if (textarea) {
-  //     const start = textarea.selectionStart;
-  //     const end = textarea.selectionEnd;
-
-  //     // Show display name in textarea
-  //     const newText =
-  //       content.substring(0, start) + linkText + content.substring(end);
-  //     setContent(newText);
-
-  //     // Store HTML version in hidden variable if needed
-  //     // (optional: maintain a separate variable for actual HTML)
-  //     setStoredHtml(
-  //       (prev) => prev.substring(0, start) + htmlLink + prev.substring(end)
-  //     );
-
-  //     setTimeout(() => {
-  //       textarea.selectionStart = textarea.selectionEnd =
-  //         start + linkText.length;
-  //       textarea.focus();
-  //     }, 0);
-  //   }
-  // };
+  const categories = [
+    "Artificial Intelligence",
+    "Environment",
+    "Technology",
+    "Education",
+  ];
 
   const placeholderAvatar =
     "https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg";
 
-  // Handle file input
   const onFileChange = (e) => {
     setAttachments((prev) => [...prev, ...Array.from(e.target.files)]);
   };
 
-  // Drag events
   const onDragOver = (e) => {
     e.preventDefault();
     setDragActive(true);
@@ -150,400 +118,113 @@ export default function BlogPost({ onClose, onInsert }) {
     }
   };
 
-  // Remove attachment
   const removeAttachment = (index) => {
     setAttachments((prev) => prev.filter((_, i) => i !== index));
   };
 
-  console.log("Get PhotoPost Data", content, attachments, postType, eventData);
-
-  console.log("Get Event  Data", eventData);
-
   return (
     <>
       <div className="modal-overlay">
-        <div className="modal-content">
-          <div className="modal-header">
-            <span className="modal-title">Create Blog Post</span>
-            <span
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={onClose}
-            >
-              x
-            </span>
+        <div className="modal-content custom-modal">
+          <div className="modal-header custom-header">
+            <span className="modal-title">Create Post</span>
+            <button className="btn-close" onClick={onClose}></button>
           </div>
-          {/* <hr className="photomodal-divider" /> */}
-
           <div className="modal-body">
-            {attachments.length === 0 ? (
-              <div className="photomodal-user-row">
-                <textarea
-                  className="photomodal-textarea"
-                  placeholder="Share your thoughts..."
-                  rows={12}
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                />
-              </div>
-            ) : (
-              <div className="photomodal-user-row">
-                <textarea
-                  className="photomodal-textarea"
-                  placeholder="Share your thoughts..."
-                  rows={6}
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                />
-              </div>
-            )}
-
-            {/* <div className="photomodal-user-row">
-              <textarea
-                className="photomodal-textarea"
-                placeholder="Share your thoughts..."
-                rows={12}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-            </div> */}
-
-            <div
-              className="extra-btn"
-              style={{
-                display: "flex",
-                gap: "8px",
-                marginTop: "8px",
-              }}
-            >
-              <button
-                style={{
-                  background: "#f0f0f0",
-                  border: "none",
-                  padding: "6px 10px",
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  fontSize: "18px",
-                  transition: "all 0.2s ease",
-                }}
-                onMouseOver={(e) => (e.target.style.background = "#e0e0e0")}
-                onMouseOut={(e) => (e.target.style.background = "#f0f0f0")}
-                onClick={() => setShowPicker(showPicker ? false : true)}
+            <div className="mb-2">
+              {/* <label className="form-label fw-semibold">
+                Select Category <span className="text-danger">*</span>
+              </label> */}
+              <select
+                className="form-select"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               >
-                😊
+                <option value="">
+                  Select Category<span className="text-danger">*</span>
+                </option>
+                {categories.map((cat, idx) => (
+                  <option key={idx} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              <hr></hr>
+            </div>
+            <textarea
+              className="form-control custom-textarea"
+              placeholder="Share your thoughts...."
+              rows={12}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <hr></hr>
+          <div className="modal-footer custom-footer d-flex align-items-center justify-content-between">
+            <div className="d-flex gap-3">
+              <button className="icon-btn">
+                <BsImage />
               </button>
-
-              <button
-                style={{
-                  border: "none",
-                  padding: "6px 10px",
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  transition: "all 0.2s ease",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                onMouseOver={(e) => (e.target.style.background = "#e0e0e0")}
-                onMouseOut={(e) => (e.target.style.background = "#f0f0f0")}
-                onClick={() => setShowLinkModal(true)}
-              >
+              <button className="icon-btn">
+                <BsCameraVideo />
+              </button>
+              <button className="icon-btn">
+                <BsCalendarEvent />
+              </button>
+              <button className="icon-btn">
+                <BsFileEarmarkText />
+              </button>
+            </div>
+            <div className="d-flex gap-3">
+              <button className="icon-btn">
                 <FaLink />
               </button>
-            </div>
-
-            {attachments.length === 0 && (
-              <ul className="nav nav-pills nav-stack small fw-normal">
-                <li
-                  className="nav-item"
-                  onClick={() => setPhotoPost(photoPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-success">📷</span> Photo
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setVideoPost(videoPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-info">🎥</span> Video
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setEventPost(eventPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-danger">📅</span> Event
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setDocumentPost(documentPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-danger">📄</span> Docs
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setFeelingPost(feelingPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-warning">😊</span> Feeling /
-                    Activity
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setPollPost(pollPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-warning">📊</span> Poll
-                  </a>
-                </li>
-
-                <li
-                  className="nav-item"
-                  onClick={() => setLinkPost(linkPost ? false : true)}
-                >
-                  <a className="nav-link bg-light">
-                    <span className="icon text-warning"> 🎮 </span> Games
-                  </a>
-                </li>
-              </ul>
-            )}
-          </div>
-
-          {/* Previews of content */}
-
-          {eventData?.length > 0 &&
-            postType === "EVENT" &&
-            eventData.map((event, index) => (
-              <div key={index} className="feed-event-preview">
-                <h4 className="feed-event-title">{event.title}</h4>
-                <p className="feed-event-description">{event.description}</p>
-
-                <div className="feed-event-details">
-                  <p>
-                    <strong>📅 Date:</strong> {event.date || "N/A"}
-                  </p>
-                  <p>
-                    <strong>⏰ Time:</strong> {event.time || "N/A"}
-                  </p>
-                  <p>
-                    <strong>🕒 Duration:</strong> {event.duration || "N/A"}
-                  </p>
-                  <p>
-                    <strong>📍 Location:</strong> {event.location || "N/A"}
-                  </p>
-                </div>
-
-                <div className="feed-event-attachments">
-                  {event.attachments && event.attachments.length > 0 ? (
-                    event.attachments.map((file, i) => (
-                      <a
-                        key={i}
-                        href={URL.createObjectURL(file)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="feed-doc"
-                      >
-                        📄 {file.name}
-                      </a>
-                    ))
-                  ) : (
-                    <p>No attachments</p>
-                  )}
-                </div>
-              </div>
-            ))}
-
-          {postType === "PHOTO" && attachments.length > 0 && (
-            <div className="attachments-preview">
-              {attachments
-                .filter(
-                  (file) =>
-                    file instanceof File && file.type.startsWith("image/")
-                )
-                .map((file, i) => (
-                  <div key={i} className="attachment-item">
-                    <button
-                      className="delete-btn"
-                      onClick={() => removeAttachment(i)}
-                      title="Remove attachment"
-                    >
-                      ×
-                    </button>
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt={file.name}
-                      className="attachment-image"
-                    />
-                  </div>
-                ))}
-            </div>
-          )}
-
-          {postType === "VIDEO" && attachments.length > 0 && (
-            <div className="attachments-preview">
-              {attachments
-                .filter(
-                  (file) =>
-                    file instanceof File && file.type.startsWith("video/")
-                )
-                .map((file, i) => (
-                  <div key={i} className="attachment-item">
-                    <button
-                      className="delete-btn"
-                      onClick={() => removeAttachment(i)}
-                      title="Remove attachment"
-                    >
-                      ×
-                    </button>
-                    <video
-                      controls
-                      className="attachment-video"
-                      src={URL.createObjectURL(file)}
-                    />
-                  </div>
-                ))}
-            </div>
-          )}
-
-          {postType === "DOC" && attachments.length > 0 && (
-            <div className="attachments-preview">
-              {attachments
-                .filter(
-                  (file) =>
-                    file instanceof File &&
-                    !file.type.startsWith("image/") &&
-                    !file.type.startsWith("video/")
-                )
-                .map((file, i) => (
-                  <div key={i} className="attachment-item">
-                    <button
-                      className="delete-btn"
-                      onClick={() => removeAttachment(i)}
-                      title="Remove attachment"
-                    >
-                      ×
-                    </button>
-                    <a
-                      href={URL.createObjectURL(file)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="attachment-doc"
-                    >
-                      📄 {file.name}
-                    </a>
-                  </div>
-                ))}
-            </div>
-          )}
-
-          {/* Previews of attachments */}
-
-          <div className="modal-footer">
-            <div className="footer-buttons">
-              <button
-                type="button"
-                className="btn btn-danger-soft me-2"
-                onClick={onClose}
-              >
-                Cancel
+              <button className="icon-btn">
+                <FaSmile />
               </button>
-              <button
-                type="submit"
-                className="btn btn-success-soft"
-                disabled={attachments.length === 0}
-                onClick={handleSubmit}
-              >
-                Post
+              <button className="icon-btn send-btn" onClick={handleSubmit}>
+                <FaPaperPlane />
               </button>
             </div>
           </div>
         </div>
-        {showPicker && <EmojiPickerModal onSelect={onEmojiClick} />}
-
-        {showLinkModal && (
-          <LinkModal
-            onInsert={handleLinkInsert}
-            onClose={() => setShowLinkModal(false)}
-          />
-        )}
       </div>
-
-      {/* Modal for Blog Editor */}
-      {/* {photoPost && <PhotoPost onClose={() => setPhotoPost(false)} />} */}
 
       {photoPost && (
         <PhotoPost
           onClose={() => setPhotoPost(false)}
           onInsert={(files, type) => {
-            setAttachments((prev) => [...prev, ...files]); // Add to BlogPost attachments
-            setPostType(type); // ✅ Capture post type
-            setPhotoPost(false); // Close modal after adding
+            setAttachments((prev) => [...prev, ...files]);
+            setPostType(type);
+            setPhotoPost(false);
           }}
         />
       )}
-
-      {/* Modal for Blog Editor */}
-      {/* {videoPost && <VideoPost onClose={() => setVideoPost(false)} />} */}
 
       {videoPost && (
         <VideoPost
           onClose={() => setVideoPost(false)}
           onInsert={(files, type) => {
-            setAttachments((prev) => [...prev, ...files]); // Add to BlogPost attachments
-            setPostType(type); // ✅ Capture post type
-            setVideoPost(false); // Close modal after adding
+            setAttachments((prev) => [...prev, ...files]);
+            setPostType(type);
+            setVideoPost(false);
           }}
         />
       )}
-
-      {/* Modal for Blog Editor */}
-      {/* {eventPost && <CreateEventModal onClose={() => setEventPost(false)} />} */}
 
       {eventPost && (
         <CreateEventModal
           onClose={() => setEventPost(false)}
           onInsert={(data) => {
-            setEventData((prev) => [...prev, data]); // Just add the new event object
-            setPostType(data.postType); // ✅ Capture post type
+            setEventData((prev) => [...prev, data]);
+            setPostType(data.postType);
             if (data.attachments) {
               setAttachments((prev) => [...prev, ...data.attachments]);
             }
-            console.log("Event Data:", data);
             setEventPost(false);
           }}
         />
       )}
-
-      {/* Modal for Blog Editor */}
-      {feelingPost && (
-        <CreateFeelingModal onClose={() => setFeelingPost(false)} />
-      )}
-
-      {/* Modal for Blog Editor */}
-      {documentPost && <DocumentPost onClose={() => setDocumentPost(false)} />}
-
-      {/* Modal for Blog Editor */}
-      {pollPost && <PollModal onClose={() => setPollPost(false)} />}
-
-      {/* Modal for Blog Editor */}
-      {linkPost && <LinkPostModal onClose={() => setLinkPost(false)} />}
-
-      {/* Modal for Blog Editor */}
-      {blogPost && <BlogPost onClose={() => setBlogPost(false)} />}
     </>
   );
 }

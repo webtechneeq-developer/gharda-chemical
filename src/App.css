@@ -1,21 +1,24 @@
 ul {
-    list-style: circle;
-    padding-left: 3rem;
+  list-style: circle;
+  padding-left: 3rem;
 }
 
 .blog-btn {
-margin-top: 10px;
-background-color: #007bff;
-color: white;
-padding: 10px 20px;
-border: none;
-border-radius: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
 }
 
 .blog-title {
-border-radius: 10px;
+  border-radius: 10px;
 }
 
 .blog-btn:hover {
-background-color: #20538a;
+  background-color: #20538a;
+}
+.main-container {
+  background: url(/public/images/bg.webp) !important;
 }

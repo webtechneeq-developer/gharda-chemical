@@ -90,10 +90,13 @@ export default function BlogPost({ onClose, onInsert }) {
   };
 
   const categories = [
+    "E-Books",
+    "Health Tips",
+    "Nutrition Tips",
+    "Financial Tips & Investment Insights",
+    "Learning & Development",
     "Artificial Intelligence",
-    "Environment",
-    "Technology",
-    "Education",
+    "Environment Tips",
   ];
 
   const placeholderAvatar =

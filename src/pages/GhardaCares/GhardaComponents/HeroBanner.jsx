@@ -12,14 +12,17 @@ function HeroBanner() {
 
   // 2. Array of category names
   const categories = [
-    "General",
-    "Awards & Certification",
-    "HR Updates",
-    "Products",
-    "Informal Announcements related to lifestyle",
-    "GARC Updates",
-    "New school ",
-    "Admissions etc",
+    "Environment ",
+    "Responsible Care",
+    "Safety",
+    "Health ",
+    "Greenbelts",
+    "Awards & Certifications",
+    "Education",
+    "Environment",
+    "Health",
+    "Livelihood ",
+    "Topical Days",
   ];
 
   return (

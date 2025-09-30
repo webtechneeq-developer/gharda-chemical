@@ -9,7 +9,15 @@ function Blog() {
   const [activeTab, setActiveTab] = useState("");
 
   // Categories defined here (parent)
-  const categories = ["AI", "Environment", "Technology", "Education"];
+  const categories = [
+    "E-Books",
+    "Health Tips",
+    "Nutrition Tips",
+    "Financial Tips & Investment Insights",
+    "Learning & Development",
+    "Artificial Intelligence",
+    "Environment Tips",
+  ];
 
   useEffect(() => {
     const fetchBlogs = async () => {

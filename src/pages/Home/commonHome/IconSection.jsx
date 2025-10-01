@@ -18,7 +18,7 @@ const items = [
     title: "Employee Connect",
     icon: "/images/employee-Connect.png",
     bgColor: "#fff3c4",
-    link: "https://animetrixlabs.com/knowledgecentre/quiz/",
+    link: "/employee-connect",
   },
   {
     title: "Company Annoucement",

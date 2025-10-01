@@ -3,7 +3,7 @@ import { useState } from "react";
 import BlogEditor from "../../BlogEditor/components/BlogEditor";
 import "../../knowledgeCenter/knowledgeCenterComponents/knowledgeCenterComponent.css";
 import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG icon
-import { moduleCategories } from "../../../data/categories";
+
 // HeroBanner component for the Knowledge Center
 
 function HeroBanner() {
@@ -12,17 +12,11 @@ function HeroBanner() {
 
   // 2. Array of category names
   const categories = [
-    "Environment ",
-    "Responsible Care",
-    "Safety",
-    "Health ",
-    "Greenbelts",
-    "Awards & Certifications",
-    "Education",
-    "Environment",
-    "Health",
-    "Livelihood ",
-    "Topical Days",
+    "Category 1 ",
+    "Category 2 ",
+    "Category 3 ",
+    "Category 4 ",
+    "Category 5 ",
   ];
 
   return (
@@ -44,7 +38,9 @@ function HeroBanner() {
           </div>
         </div>
       </div> */}
-      <h1 className="text-xl font-bold text-center mt-5 mb-3">Gharda Cares</h1>
+      <h1 className="text-xl font-bold text-center mt-5 mb-3">
+        Employee Connect
+      </h1>
 
       <BlogEditor categories={categories} />
       {/* <div className="">

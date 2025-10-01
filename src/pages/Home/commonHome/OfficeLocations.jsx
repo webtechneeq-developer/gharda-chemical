@@ -37,35 +37,36 @@ function OfficeLocations() {
   ];
 
   return (
-    <div className="main-section-office-locations">
+    <div className="main-section-office-locations mb-0">
       <div className="office-locations-container">
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5">
             {officeData.map((office) => (
               <div className="col" key={office.id}>
                 <div
-                  className="office-card card h-100 "
+                  className="office-card card h-100"
                   style={{ border: "none" }}
                 >
-                  <img
-                    src={office.imageSrc}
-                    className="office-card-image "
-                    alt={`Office ${office.id}`}
-                  />
-                  <div className="office-card-body card-body">
-                    <h5 className="office-card-title card-title">
-                      {office.name}
-                    </h5>
-                    <p className="office-card-address card-text">
-                      {office.address}
-                    </p>
-                    <p className="office-card-phone card-text">
-                      <small className="">{office.phone}</small>
-                    </p>
+                  <div className="office-card-wrapper">
+                    <img
+                      src={office.imageSrc}
+                      className="office-card-image"
+                      alt={`Office ${office.id}`}
+                    />
+
+                    {/* Overlay that appears on hover */}
+                    <div className="office-card-overlay">
+                      <div className="office-card-content">
+                        <h5 className="office-card-title">{office.name}</h5>
+                        <p className="office-card-address">{office.address}</p>
+                        <p className="office-card-phone">
+                          <small>{office.phone}</small>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              
             ))}
           </div>
         </div>

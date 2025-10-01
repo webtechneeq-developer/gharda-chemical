@@ -23,6 +23,7 @@ import Blog from "./pages/BlogEditor/Blog";
 import GhardaUnplugged from "./pages/GhardaUnplugged/GhardaUnplugged";
 import CompanyAnnouncement from "./pages/CompanyAnnouncement/CompanyAnnouncement";
 import GhardaCares from "./pages/GhardaCares/GhardaCares";
+import EmployeeConnect from "./pages/EmployeeConnect/EmployeeConnect";
 
 const RoutesAll = () => {
   const routers = createBrowserRouter([
@@ -32,6 +33,10 @@ const RoutesAll = () => {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "employee-connect",
+          element: <EmployeeConnect />,
         },
         {
           path: "content-bank",

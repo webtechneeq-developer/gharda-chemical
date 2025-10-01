@@ -27,7 +27,7 @@ const Home = () => {
       {/* <CategorySlider /> */}
 
       {/* LatestPosts start */}
-      <BlogPosts />
+      {/* <BlogPosts /> */}
 
       {/* OfficeLocations */}
       <OfficeLocations />

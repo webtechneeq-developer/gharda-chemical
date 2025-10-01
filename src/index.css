@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +20,6 @@ h4,
 h5,
 h6 {
   margin: 0 !important;
-  
 }
 
 ul,
@@ -528,9 +526,14 @@ body {
 
 /* Footer */
 .footer-bg-info {
-  background-color: #4cc9f0 !important;
-  padding: 13px;
-  margin-top: 7px;
+  background: linear-gradient(
+    94.6deg,
+    #12a0e3 -2.74%,
+    #034ea2 112.99%
+  ) !important;
+  padding: 13px !important;
+  margin-top: 0px !important;
+  border-top: 1px solid black;
 }
 
 /* end Footer */
@@ -717,4 +720,3 @@ body {
 .item-5 {
   grid-row: span 1;
 }
-

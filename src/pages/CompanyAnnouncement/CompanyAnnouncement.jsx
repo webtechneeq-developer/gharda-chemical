@@ -9,6 +9,7 @@ import PostContent from "../Categories/PostContentProps";
 import PostActions from "../Categories/PostActionsProps";
 import Blog from "../BlogEditor/Blog";
 import HeroBanner from "./CompanyAnnouncementComponent/heroBanner";
+import Feed from "../BlogEditor/components/SingleFeedPost";
 
 // Placeholder component for Knowledge Center
 // This component can be expanded with actual content later
@@ -108,10 +109,11 @@ const CompanyAnnouncement = () => {
 
   return (
     <>
-      {/* <HeroBanner /> */}
-      <HeroBanner />
+      <div className="main-container">
+        {/* <HeroBanner /> */}
+        <HeroBanner />
+        <Feed />
 
-      <div className="container">
         {/* Posts */}
         {showSelectedPost.map((data) => (
           <Card key={data.id} className="post-card mb-sm-5 mb-4 border-0">

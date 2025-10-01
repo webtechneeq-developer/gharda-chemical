@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import BlogEditor from "../../BlogEditor/components/BlogEditor";
+
 import "../../knowledgeCenter/knowledgeCenterComponents/knowledgeCenterComponent.css";
 import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG icon
 
@@ -7,133 +9,21 @@ import megaphone from "../../../assets/megaphone-alt.svg"; // Importing the SVG 
 
 function HeroBanner() {
   const [activeTab, setActiveTab] = useState("hobbies"); // "text" | "pdf"
-
+  const [activeCategory, setActiveCategory] = useState("General");
+  // 2. Array of category names
+  const categories = [
+    "Company Policies ",
+    "R&D Manuals",
+    "HO - IT Policies",
+    "Policies and Guidelines ",
+    "Procurement - Standard Operating Procedures (SOPs)",
+    "Forms & Templates",
+    "Checklists & Reference Documents",
+  ];
   return (
     <div className="">
-{/*       <div className="newsfeed-banner">
-        <div className="media">
-          <div className="item-icon">
-            <img
-              className="icofont-megaphone-alt"
-              style={{ color: "#fff" }}
-              src={megaphone}
-            ></img>
-          </div>
-          <div className="media-body">
-            <h3 className="item-title">Content Bank</h3>
-            <p>
-              Check what your Collegues at Gharda Chemicals have been up to!
-            </p>
-          </div>
-        </div>
-      </div> */}
-        <h1 className="text-xl font-bold text-center mt-5 mb-3">
-        Content Bank
-        </h1>
-      {/* <div className="">
-        <div class="filter-tab">
-          <div class="quick-filters item-list-tabs block-box unplugged-timeline-header">
-            <ul class="quick-filters-tabs menu-list d-md-block">
-              <li
-                className={`tab-btn ${activeTab === "hobbies" ? "active" : ""}`}
-                onClick={() => setActiveTab("hobbies")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Hobbies & Passions</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "recipes" ? "active" : ""}`}
-                onClick={() => setActiveTab("recipes")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Recipes & Culinary Stories</a>
-              </li>
-              <li
-                className={`tab-btn ${
-                  activeTab === "traditions" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("traditions")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Family Traditions</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "blogs" ? "active" : ""}`}
-                onClick={() => setActiveTab("blogs")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Blogs</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "desk" ? "active" : ""}`}
-                onClick={() => setActiveTab("desk")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Leader's Desk</a>
-              </li>
-              <li
-                className={`tab-btn ${activeTab === "success" ? "active" : ""}`}
-                onClick={() => setActiveTab("success")}
-                style={{ cursor: "pointer" }}
-              >
-                <a>Success Stories</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <div class="activity-item type-activity_update" id="activity-694">
-        <div class="block-box post-view">
-          <div class="tag-stickers"></div>
-          <div class="post-header">
-            <div class="media">
-              <div class="activity-avatar">
-                <div class="user-img">
-                  <a
-                    class="user-avatar small no-outline "
-                    href="https://animetrixlabs.com/knowledgecentre/members/wt-gharda/"
-                  >
-                    <img
-                      alt=""
-                      class="avatar user-2-avatar photo"
-                      src="https://animetrixlabs.com/knowledgecentre/wp-content/uploads/avatars/1/60af1abf02c8c-bpfull.jpg"
-                    />
-                  </a>
-                </div>
-                <div class="status-info">
-                  <div class="activity-title">
-                    <a href="https://animetrixlabs.com/knowledgecentre/members/wt-gharda/">
-                      wt-gharda
-                    </a>
-                    <span> posted an update</span>
-                  </div>
-                  <div class="activity-time">21 hours ago</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="post-body">
-            <div class="activity-inner">
-              <p class="widget-box-status-text">hello</p>
-            </div>
-            <div class="post-meta-wrap">
-              <div class="post-meta activity-reaction post-reaction">
-                No React!
-              </div>
-              <div class="post-meta activity-meta">
-                <div class="meta-text">
-                  <span>0</span> Comments
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="post-footer"></div>
-          <div class="post-comment">
-            <div class="activity-comments"></div>
-          </div>
-        </div>
-      </div> */}
+      <h1 className="text-xl font-bold text-center mt-5 mb-3">Content Bank</h1>
+      <BlogEditor categories={categories} />
     </div>
   );
 }

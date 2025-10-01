@@ -12,11 +12,11 @@ const WeatherCard = () => {
   });
   return (
     <div className="weather-card">
-      <h3 className="mx-5">
-        Upcoming BirthDays
-        <FaCakeCandles style={{ color: "#FF0000", marginLeft: "10px" }} />
+      <h3 style={{ color: "#3e3232bf" }} className="mx-5">
+        <FaCakeCandles style={{ color: "#FF0000", marginRight: "15px" }} />
+        Upcoming Birthdays
       </h3>
-      <div className="event-box">
+      <div className="event-box mx-2">
         <div className="event-item">
           <FaCakeCandles style={{ color: "#FF0000", marginRight: "10px" }} />
           <div className="content">

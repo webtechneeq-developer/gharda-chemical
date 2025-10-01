@@ -57,13 +57,14 @@ ul {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 75%;
+  height: auto;
   background: rgba(0, 0, 0, 0.65); /* black with opacity */
   display: flex;
   align-items: flex-end;
   justify-content: center;
   transform: translateY(100%); /* hidden by default */
   transition: transform 0.5s ease;
+  border-radius: 35px 35px 0px 0px; /* smooth edges */
 }
 
 /* Slide up on hover */

@@ -10,7 +10,7 @@ const items = [
   },
   {
     title: "Forums",
-    icon: "/images/Forums.png",
+    icon: "/images/3dforumicon.webp",
     bgColor: "#e5f0ff",
     link: "https://animetrixlabs.com/knowledgecentre/forums/",
   },
